@@ -17,11 +17,15 @@
   },
   "homepage": "https://github.com/wavesplatform/js-test-env#readme",
   "dependencies": {
-    "@types/node": "^12.0.8",
     "@waves/ride-js": "^0.17.7",
-    "@waves/waves-transactions": "^3.10.1"
+    "@waves/waves-transactions": "^3.10.1",
+    "tslib": "^1.10.0",
+    "typedoc": "^0.14.2"
   },
   "devDependencies": {
+    "@types/node": "^12.0.8",
+    "tslint": "^5.17.0",
+    "typedoc-plugin-external-module-name": "^2.1.0",
     "typescript": "^3.5.1"
   }
 }

@@ -1,3 +1,6 @@
+/**
+ * @module GlobalEnv
+ */
 import * as wt from '@waves/waves-transactions';
 import {
     IAliasParams,
