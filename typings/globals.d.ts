@@ -4,7 +4,7 @@ interface IEnv {
     CHAIN_ID: string
     SEED: string
     isScripted?: boolean
-    file: (name?: string) => Promise<string>
+    file: (name?: string) => string
 }
 
 declare namespace NodeJS {

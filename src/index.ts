@@ -279,7 +279,7 @@ export async function broadcast(tx: wt.TTx, apiBase?: string) {
 /**
  * Returns file content as string. Either from 'ride' folder or WEB IDE storage
  */
-export async function file(name?: string): Promise<string> {
+export function file(name?: string): string {
     if (typeof global.env.file !== 'function') {
         throw new Error('File content API is not available. Please provide it to the console');
     }
