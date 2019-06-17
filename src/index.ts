@@ -45,7 +45,7 @@ const currentAddress = () => wt.libs.crypto.address(global.env.SEED, global.env.
 const injectEnv = <T extends (pp: any, ...args: any[]) => any>(f: T) =>
     (po: wt.TTxParams, seed?: wt.TSeedTypes | null): ReturnType<typeof f> =>
         f(
-            {chainId: global.env.CHAIN_ID, ...po},
+            {chainId: global.env.CHAIN_ID, additionalFee: seed === undefined && global.env.isScripted ? 400000 : undefined, ...po},
             seed === null
                 ? null
                 : seed || global.env.SEED

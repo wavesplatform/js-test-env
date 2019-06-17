@@ -3,6 +3,7 @@ interface IEnv {
     API_BASE: string
     CHAIN_ID: string
     SEED: string
+    isScripted?: boolean
     file: (name?: string) => Promise<string>
 }
 
