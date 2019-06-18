@@ -34,22 +34,28 @@ import {
 import { WithTxType } from '@waves/waves-transactions/dist/general';
 import { compile as cmpl } from '@waves/ride-js';
 
+export let context:any = global;
 
-const withDefaults = (options: wt.nodeInteraction.INodeRequestOptions = {}) => ({
-    timeout: options.timeout || 20000,
-    apiBase: options.apiBase || global.env.API_BASE
-});
+function withDefaults(options: wt.nodeInteraction.INodeRequestOptions = {})  {
+    return {
+        timeout: options.timeout || 20000,
+            apiBase: options.apiBase || context.env.API_BASE
+    }
+}
 
-const currentAddress = () => wt.libs.crypto.address(global.env.SEED, global.env.CHAIN_ID);
 
-const injectEnv = <T extends (pp: any, ...args: any[]) => any>(f: T) =>
-    (po: wt.TTxParams, seed?: wt.TSeedTypes | null): ReturnType<typeof f> =>
+function currentAddress(){ return wt.libs.crypto.address(context.env.SEED, context.env.CHAIN_ID)};
+
+function injectEnv<T extends (pp: any, ...args: any[]) => any>(f: T) {
+    return (po: wt.TTxParams, seed?: wt.TSeedTypes | null): ReturnType<typeof f> =>
         f(
-            {chainId: global.env.CHAIN_ID, additionalFee: seed === undefined && global.env.isScripted ? 400000 : undefined, ...po},
+            {chainId: context.env.CHAIN_ID, additionalFee: seed === undefined && context.env.isScripted ? 400000 : undefined, ...po},
             seed === null
                 ? null
-                : seed || global.env.SEED
+                : seed || context.env.SEED
         );
+}
+
 
 /// TRANSACTION CREATORS
 /**
@@ -205,7 +211,7 @@ export async function waitNBlocks(blocksCount: number, options?: wt.nodeInteract
  * By default has 20s timeout and uses current environment node
  */
 export async function currentHeight(apiBase?: string) {
-    return wt.nodeInteraction.currentHeight(apiBase || global.env.API_BASE);
+    return wt.nodeInteraction.currentHeight(apiBase || context.env.API_BASE);
 }
 
 /**
@@ -222,7 +228,7 @@ export async function waitForHeight(target: number, options?: wt.nodeInteraction
  */
 export async function balance(address?: string, apiBase?: string) {
     return wt.nodeInteraction.balance(address || currentAddress(),
-        apiBase || global.env.API_BASE);
+        apiBase || context.env.API_BASE);
 }
 
 /**
@@ -231,7 +237,7 @@ export async function balance(address?: string, apiBase?: string) {
  */
 export async function assetBalance(assetId: string, address?: string, apiBase?: string) {
     return wt.nodeInteraction.assetBalance(assetId, address || currentAddress(),
-        apiBase || global.env.API_BASE);
+        apiBase || context.env.API_BASE);
 }
 
 /**
@@ -239,7 +245,7 @@ export async function assetBalance(assetId: string, address?: string, apiBase?: 
  * By default uses current environment address and node
  */
 export async function balanceDetails(address?: string, apiBase?: string) {
-    return wt.nodeInteraction.balanceDetails(address || currentAddress(), apiBase || global.env.API_BASE);
+    return wt.nodeInteraction.balanceDetails(address || currentAddress(), apiBase || context.env.API_BASE);
 }
 
 /**
@@ -247,7 +253,7 @@ export async function balanceDetails(address?: string, apiBase?: string) {
  * By default uses current environment address and node
  */
 export async function accountData(address?: string, apiBase?: string) {
-    return wt.nodeInteraction.accountData(address || currentAddress(), apiBase || global.env.API_BASE);
+    return wt.nodeInteraction.accountData(address || currentAddress(), apiBase || context.env.API_BASE);
 }
 
 /**
@@ -255,7 +261,7 @@ export async function accountData(address?: string, apiBase?: string) {
  * By default uses current environment address and node
  */
 export async function accountDataByKey(key: string, address?: string, apiBase?: string) {
-    return wt.nodeInteraction.accountDataByKey(key, address || currentAddress(), apiBase || global.env.API_BASE);
+    return wt.nodeInteraction.accountDataByKey(key, address || currentAddress(), apiBase || context.env.API_BASE);
 }
 
 /**
@@ -263,7 +269,7 @@ export async function accountDataByKey(key: string, address?: string, apiBase?: 
  * By default uses current environment address and node
  */
 export async function stateChanges(invokeScriptTxId: string, apiBase?: string) {
-    return wt.nodeInteraction.stateChanges(invokeScriptTxId, apiBase || global.env.API_BASE);
+    return wt.nodeInteraction.stateChanges(invokeScriptTxId, apiBase || context.env.API_BASE);
 }
 
 /**
@@ -271,7 +277,7 @@ export async function stateChanges(invokeScriptTxId: string, apiBase?: string) {
  * By default uses current environment address and node
  */
 export async function broadcast(tx: wt.TTx, apiBase?: string) {
-    return wt.nodeInteraction.broadcast(tx, apiBase || global.env.API_BASE);
+    return wt.nodeInteraction.broadcast(tx, apiBase || context.env.API_BASE);
 }
 
 
@@ -280,17 +286,17 @@ export async function broadcast(tx: wt.TTx, apiBase?: string) {
  * Returns file content as string. Either from 'ride' folder or WEB IDE storage
  */
 export function file(name?: string): string {
-    if (typeof global.env.file !== 'function') {
+    if (typeof context.env.file !== 'function') {
         throw new Error('File content API is not available. Please provide it to the console');
     }
-    return global.env.file(name);
+    return context.env.file(name);
 }
 
 /**
  * Shorthand for file()
  */
 export async function contract(): Promise<string> {
-    return global.env.file();
+    return context.env.file();
 }
 
 /**
@@ -298,7 +304,7 @@ export async function contract(): Promise<string> {
  * By default uses current environment seed
  */
 export function keyPair(seed?: string) {
-    return wt.libs.crypto.keyPair(seed || global.env.SEED);
+    return wt.libs.crypto.keyPair(seed || context.env.SEED);
 }
 
 /**
@@ -306,7 +312,7 @@ export function keyPair(seed?: string) {
  * By default uses current environment seed
  */
 export function publicKey(seed?: string): string {
-    return wt.libs.crypto.keyPair(seed || global.env.SEED).public;
+    return wt.libs.crypto.keyPair(seed || context.env.SEED).public;
 }
 
 /**
@@ -314,7 +320,7 @@ export function publicKey(seed?: string): string {
  * By default uses current environment seed
  */
 export function privateKey(seed?: string): string {
-    return wt.libs.crypto.keyPair(seed || global.env.SEED).private;
+    return wt.libs.crypto.keyPair(seed || context.env.SEED).private;
 }
 
 /**
@@ -323,8 +329,8 @@ export function privateKey(seed?: string): string {
  */
 export function address(seed?: string, chainId?: string) {
     return wt.libs.crypto.address(
-        seed || global.env.SEED,
-        chainId || global.env.CHAIN_ID
+        seed || context.env.SEED,
+        chainId || context.env.CHAIN_ID
     );
 }
 
@@ -343,7 +349,7 @@ export function compile(code: string): string {
  * By default uses current environment seed and chainId
  */
 export function signBytes(bytes: Uint8Array, seed?: string) {
-    return wt.libs.crypto.signBytes(bytes, seed || global.env.SEED);
+    return wt.libs.crypto.signBytes(bytes, seed || context.env.SEED);
 }
 
 
@@ -361,8 +367,8 @@ export interface ISetupAccountsOptions {
 }
 
 /**
- * Generates test accounts with balances. Sends waves to generated accounts from master seed. Saves account seeds to global.env.accounts
- * E.g.: setupAccounts({foo:1000}). Now global.env.accounts['foo'] contains seed phrase for account and this account has
+ * Generates test accounts with balances. Sends waves to generated accounts from master seed. Saves account seeds to context.env.accounts
+ * E.g.: setupAccounts({foo:1000}). Now context.env.accounts['foo'] contains seed phrase for account and this account has
  * 1000 wavelets
  * By default uses current environment node and seed as masterSeed
  */
@@ -375,18 +381,18 @@ export async function setupAccounts(balances: Record<string, number>, options?: 
         .join('');
 
     const nonce = (options && options.nonce) || getNonce();
-    const masterSeed = (options && options.masterSeed) || global.env.SEED;
+    const masterSeed = (options && options.masterSeed) || context.env.SEED;
 
-    global.console.log(`Generating accounts with nonce: ${nonce}`);
+    context.console.log(`Generating accounts with nonce: ${nonce}`);
 
     const transfers: IMassTransferItem[] = [];
 
     Object.entries(balances).forEach(([name, balance]) => {
         const seed = name + '#' + nonce;
-        const addr = address(seed, global.env.CHAIN_ID);
+        const addr = address(seed, context.env.CHAIN_ID);
 
-        global.env.accounts[name] = seed;
-        global.console.log(`Account generated: ${seed} - ${addr}`);
+        context.env.accounts[name] = seed;
+        context.console.log(`Account generated: ${seed} - ${addr}`);
         transfers.push({
             recipient: addr,
             amount: balance
@@ -396,6 +402,6 @@ export async function setupAccounts(balances: Record<string, number>, options?: 
     const mtt = massTransfer({transfers}, masterSeed);
     await broadcast(mtt);
     await waitForTx(mtt.id);
-    global.console.log(`Accounts successfully funded`);
-    return {...global.env.accounts};
+    context.console.log(`Accounts successfully funded`);
+    return {...context.env.accounts};
 }
