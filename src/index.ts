@@ -36,6 +36,8 @@ import { compile as cmpl } from '@waves/ride-js';
 
 export let context:any = global;
 
+export const accounts: Record<string, string> = {};
+
 function withDefaults(options: wt.nodeInteraction.INodeRequestOptions = {})  {
     return {
         timeout: options.timeout || 20000,
@@ -375,6 +377,8 @@ export interface ISetupAccountsOptions {
 export async function setupAccounts(balances: Record<string, number>, options?: ISetupAccountsOptions):
     Promise<Record<string, string>>
 {
+    if (!context.accounts) context.accounts = {};
+
     const getNonce = () => [].map.call(
         wt.libs.crypto.randomUint8Array(4),
         (n: number) => n.toString(16))
@@ -391,7 +395,7 @@ export async function setupAccounts(balances: Record<string, number>, options?: 
         const seed = name + '#' + nonce;
         const addr = address(seed, context.env.CHAIN_ID);
 
-        context.env.accounts[name] = seed;
+        context.accounts[name] = seed;
         context.console.log(`Account generated: ${seed} - ${addr}`);
         transfers.push({
             recipient: addr,
