@@ -30,15 +30,16 @@ import {
     TOrder,
     TSeedTypes, TTx, TTxParams,
     WithId,
+    WithTxType,
+    INodeRequestOptions
 } from '@waves/waves-transactions';
-import { WithTxType } from '@waves/waves-transactions/dist/general';
 import { compile as cmpl } from '@waves/ride-js';
 
 export let context:any = global;
 
 export const accounts: Record<string, string> = {};
 
-function withDefaults(options: wt.nodeInteraction.INodeRequestOptions = {})  {
+function withDefaults(options: INodeRequestOptions = {})  {
     return {
         timeout: options.timeout || 20000,
             apiBase: options.apiBase || context.env.API_BASE
@@ -186,7 +187,7 @@ export function signTx(params: TTx | TTxParams & WithTxType, seed?: TSeedTypes):
  * Resolves when specified txId is mined into the block
  * By default has 20s timeout and uses current environment node
  */
-export async function waitForTx(txId: string, options?: wt.nodeInteraction.INodeRequestOptions) {
+export async function waitForTx(txId: string, options?: INodeRequestOptions) {
     return wt.nodeInteraction.waitForTx(txId, withDefaults(options));
 }
 
@@ -196,7 +197,7 @@ export async function waitForTx(txId: string, options?: wt.nodeInteraction.INode
  */
 export async function waitForTxWithNConfirmations(txId: string,
                                                   confirmations: number,
-                                                  options?: wt.nodeInteraction.INodeRequestOptions) {
+                                                  options?: INodeRequestOptions) {
     return wt.nodeInteraction.waitForTxWithNConfirmations(txId, confirmations, withDefaults(options));
 }
 
@@ -204,7 +205,7 @@ export async function waitForTxWithNConfirmations(txId: string,
  * Resolves N blocks after current blockchain height
  * By default has 20s timeout and uses current environment node
  */
-export async function waitNBlocks(blocksCount: number, options?: wt.nodeInteraction.INodeRequestOptions) {
+export async function waitNBlocks(blocksCount: number, options?: INodeRequestOptions) {
     return wt.nodeInteraction.waitNBlocks(blocksCount, withDefaults(options));
 }
 
@@ -220,7 +221,7 @@ export async function currentHeight(apiBase?: string) {
  * Resolves after target height has been reached
  * By default has 20s timeout and uses current environment node
  */
-export async function waitForHeight(target: number, options?: wt.nodeInteraction.INodeRequestOptions) {
+export async function waitForHeight(target: number, options?: INodeRequestOptions) {
     return wt.nodeInteraction.waitForHeight(target, withDefaults(options));
 }
 
