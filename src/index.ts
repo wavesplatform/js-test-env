@@ -41,8 +41,8 @@ export const accounts: Record<string, string> = {};
 
 function withDefaults(options: INodeRequestOptions = {})  {
     return {
-        timeout: options.timeout || 20000,
-            apiBase: options.apiBase || context.env.API_BASE
+        timeout: options.timeout || context.env.timeout || 20000,
+        apiBase: options.apiBase || context.env.API_BASE
     }
 }
 
