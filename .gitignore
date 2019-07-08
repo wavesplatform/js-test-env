@@ -488,3 +488,4 @@ jspm_packages/
 .serverless
 dist
 build
+tsconfig.tsbuildinfo

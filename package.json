@@ -1,13 +1,13 @@
 {
   "name": "@waves/js-test-env",
-  "version": "0.3.0-beta.1",
+  "version": "0.3.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildDocs": "node ./scripts/buildDocs.js",
-    "deploy": "tsc && cp package.json dist/package.json && cd dist && npm publish"
+    "deploy": "tsc && cp package.json dist/package.json && cp src/augmentedGlobal.d.ts dist/augmentedGlobal.d.ts && cd dist && npm publish -tag beta"
   },
   "repository": {
     "type": "git",
@@ -22,9 +22,13 @@
   "dependencies": {
     "@waves/ride-js": "^0.17.7",
     "@waves/waves-transactions": "^3.12.1",
+    "chai": "^4.2.0",
+    "chai-as-promised": "^7.1.1",
     "tslib": "^1.10.0"
   },
   "devDependencies": {
+    "@types/chai": "^4.1.7",
+    "@types/chai-as-promised": "^7.1.0",
     "@types/node": "^12.0.8",
     "tslint": "^5.17.0",
     "typedoc": "^0.14.2",

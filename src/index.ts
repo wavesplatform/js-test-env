@@ -1,6 +1,9 @@
 import * as wt from '@waves/waves-transactions';
 import { IMassTransferItem, INodeRequestOptions } from '@waves/waves-transactions';
 import { compile as cmpl } from '@waves/ride-js';
+import chai from 'chai'
+import chaiAsPromised from 'chai-as-promised'
+chai.use(chaiAsPromised);
 
 export function addEnvFunctionsToGlobal(global: any, options?: {broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast}) {
     function withDefaults(options: INodeRequestOptions = {}) {
@@ -25,6 +28,8 @@ export function addEnvFunctionsToGlobal(global: any, options?: {broadcastWrapper
     }
 
     global.wavesCrypto = wt.libs.crypto;
+    global.chai = chai;
+    global.expect = chai.expect;
 
     global.alias = injectEnv(wt.alias);
     global.burn = injectEnv(wt.burn);
