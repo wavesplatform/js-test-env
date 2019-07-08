@@ -1,6 +1,6 @@
 {
   "name": "@waves/js-test-env",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -21,7 +21,7 @@
   "homepage": "https://github.com/wavesplatform/js-test-env#readme",
   "dependencies": {
     "@waves/ride-js": "^0.17.7",
-    "@waves/waves-transactions": "^3.10.4",
+    "@waves/waves-transactions": "^3.12.1",
     "tslib": "^1.10.0"
   },
   "devDependencies": {

@@ -1,25 +1,36 @@
 const fs = require('fs');
 const {execSync} = require('child_process');
+const {rmdir} = require('./utils');
 
 
-const interfacesPath = './node_modules/@waves/waves-transactions/dist/transactions.d.ts';
-const mainPath = 'src/index.ts';
+
+const mainIn = './src/augmentedGlobal.d.ts';
+const interfacesIn = './node_modules/@waves/waves-transactions/dist/transactions.d.ts';
+const mainOut = './build/global.d.ts'
+const interfacesOut = './build/transactions.d.ts';
 const typedocPath = './node_modules/typedoc/bin/typedoc';
 
-// check module comment injected into transactions.d.ts
-const interfacesContent = fs.readFileSync(interfacesPath, "utf8");
-
-const modulePrefix = '/**\n' +
-    ' * @module Interfaces\n' +
-    ' */\n'
-
-if (!interfacesContent.startsWith(modulePrefix)) {
-    const firstImportIndex = interfacesContent.indexOf('import');
-    fs.writeFileSync(interfacesPath, modulePrefix, "utf-8")
-    fs.appendFileSync(interfacesPath, interfacesContent.slice(firstImportIndex), "utf-8")
+if (!fs.existsSync('build')) {
+    fs.mkdirSync('build');
+    // rmdir('build')
 }
 
-execSync(`${typedocPath} --listFiles ${mainPath} ${interfacesPath}`)
-console.log('Docs built successfully')
+
+/// Prepare main file
+const mainContent = fs.readFileSync(mainIn, "utf8").replace('declare global {', '').trim().slice(0,-1);
+fs.writeFileSync(mainOut, mainContent, "utf-8");
+
+/// Prepare interface file
+const modulePrefix = '/**\n' +
+    ' * @module Interfaces\n' +
+    ' */\n';
+const interfacesContent = fs.readFileSync(interfacesIn, "utf8");
+const firstImportIndex = interfacesContent.indexOf('import');
+fs.writeFileSync(interfacesOut, modulePrefix, "utf-8");
+fs.appendFileSync(interfacesOut, interfacesContent.slice(firstImportIndex), "utf-8")
+
+
+execSync(`${typedocPath} --listFiles ${interfacesOut} ${mainOut}`);
+console.log('Docs built successfully');
 
 
