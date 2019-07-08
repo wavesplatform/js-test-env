@@ -2,7 +2,7 @@ import * as wt from '@waves/waves-transactions';
 import { IMassTransferItem, INodeRequestOptions } from '@waves/waves-transactions';
 import { compile as cmpl } from '@waves/ride-js';
 
-export function addEnvFunctionsToGlobal(global: any, options: {broadcastWrapper: (f: typeof wt.broadcast) => typeof wt.broadcast}) {
+export function addEnvFunctionsToGlobal(global: any, options?: {broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast}) {
     function withDefaults(options: INodeRequestOptions = {}) {
         return {
             timeout: options.timeout || global.env.timeout || 20000,
@@ -65,7 +65,7 @@ export function addEnvFunctionsToGlobal(global: any, options: {broadcastWrapper:
         wt.nodeInteraction.accountDataByKey(key, address || currentAddress(), apiBase || global.env.API_BASE);
     global.stateChanges = (invokeScriptTxId: string, apiBase?: string) =>
         wt.nodeInteraction.stateChanges(invokeScriptTxId, apiBase || global.env.API_BASE);
-    global.broadcast = (tx: wt.TTx, apiBase?: string) => options.broadcastWrapper
+    global.broadcast = (tx: wt.TTx, apiBase?: string) => options && options.broadcastWrapper
         ? options.broadcastWrapper(wt.nodeInteraction.broadcast)(tx, apiBase || global.env.API_BASE)
         : wt.nodeInteraction.broadcast(tx, apiBase || global.env.API_BASE);
 
