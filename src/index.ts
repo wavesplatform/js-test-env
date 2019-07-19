@@ -1,11 +1,14 @@
 import * as wt from '@waves/waves-transactions';
 import { IMassTransferItem, INodeRequestOptions } from '@waves/waves-transactions';
 import { compile as cmpl } from '@waves/ride-js';
-import chai from 'chai'
-import chaiAsPromised from 'chai-as-promised'
+import chai from 'chai';
+import chaiAsPromised from 'chai-as-promised';
+
 chai.use(chaiAsPromised);
 
-export function addEnvFunctionsToGlobal(global: any, options?: {broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast}) {
+const NO_SEED_MSG = `Seed is undefined. Please check that you have seed in your config file or web ide settings`;
+
+export function addEnvFunctionsToGlobal(global: any, options?: { broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast }) {
     function withDefaults(options: INodeRequestOptions = {}) {
         return {
             timeout: options.timeout || global.env.timeout || 20000,
@@ -13,8 +16,12 @@ export function addEnvFunctionsToGlobal(global: any, options?: {broadcastWrapper
         };
     }
 
+    const envSeed = () => global.env.SEED || (() => {
+        throw new Error(NO_SEED_MSG);
+    })();
+
     function currentAddress() {
-        return wt.libs.crypto.address(global.env.SEED, global.env.CHAIN_ID);
+        return wt.libs.crypto.address(envSeed(), global.env.CHAIN_ID);
     }
 
     function injectEnv<T extends (pp: any, ...args: any[]) => any>(f: T) {
@@ -23,7 +30,9 @@ export function addEnvFunctionsToGlobal(global: any, options?: {broadcastWrapper
                     chainId: global.env.CHAIN_ID,
                     additionalFee: seed === undefined && global.env.isScripted ? 400000 : undefined, ...po
                 },
-                seed === null ? null : seed || global.env.SEED
+                seed === null ? null : seed || envSeed() || (() => {
+                    throw new Error(NO_SEED_MSG);
+                })()
             );
     }
 
@@ -82,10 +91,10 @@ export function addEnvFunctionsToGlobal(global: any, options?: {broadcastWrapper
     };
 
     global.contract = () => global.env.file();
-    global.keyPair = (seed?: string) => wt.libs.crypto.keyPair(seed || global.env.SEED);
-    global.publicKey = (seed?: string) => wt.libs.crypto.keyPair(seed || global.env.SEED).publicKey;
-    global.privateKey = (seed?: string) => wt.libs.crypto.keyPair(seed || global.env.SEED).privateKey;
-    global.address = (seed?: string, chainId?: string) => wt.libs.crypto.address(seed || global.env.SEED, chainId || global.env.CHAIN_ID);
+    global.keyPair = (seed?: string) => wt.libs.crypto.keyPair(seed || envSeed());
+    global.publicKey = (seed?: string) => wt.libs.crypto.keyPair(seed || envSeed()).publicKey;
+    global.privateKey = (seed?: string) => wt.libs.crypto.keyPair(seed || envSeed()).privateKey;
+    global.address = (seed?: string, chainId?: string) => wt.libs.crypto.address(seed || envSeed(), chainId || global.env.CHAIN_ID);
     global.compile = (code: string) => {
         const resultOrError = cmpl(code);
         if ('error' in resultOrError) throw new Error(resultOrError.error);
@@ -94,7 +103,7 @@ export function addEnvFunctionsToGlobal(global: any, options?: {broadcastWrapper
     };
 
     global.signBytes = (bytes: Uint8Array, seed?: string) =>
-        wt.libs.crypto.signBytes(bytes, seed || global.env.SEED);
+        wt.libs.crypto.signBytes(bytes, seed || envSeed());
 
     global.setupAccounts = async (balances: Record<string, number>, options?: any) => {
         if (!global.accounts) global.accounts = {};
@@ -105,7 +114,7 @@ export function addEnvFunctionsToGlobal(global: any, options?: {broadcastWrapper
             .join('');
 
         const nonce = (options && options.nonce) || getNonce();
-        const masterSeed = (options && options.masterSeed) || global.env.SEED;
+        const masterSeed = (options && options.masterSeed) || envSeed();
 
         global.console.log(`Generating accounts with nonce: ${nonce}`);
 

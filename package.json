@@ -1,18 +1,21 @@
 {
   "name": "@waves/js-test-env",
-  "version": "0.3.0",
+  "version": "0.4.2",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildDocs": "node ./scripts/buildDocs.js",
-    "deploy": "tsc && cp package.json dist/package.json && cp src/augmentedGlobal.d.ts dist/augmentedGlobal.d.ts && cd dist && npm publish -tag beta"
+    "prepublishOnly": "tsc && cp src/augmentedGlobal.d.ts dist/augmentedGlobal.d.ts"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/wavesplatform/js-test-env.git"
   },
+  "files": [
+    "dist"
+  ],
   "author": "",
   "license": "ISC",
   "bugs": {
@@ -20,8 +23,8 @@
   },
   "homepage": "https://github.com/wavesplatform/js-test-env#readme",
   "dependencies": {
-    "@waves/ride-js": "^0.17.7",
-    "@waves/waves-transactions": "^3.12.2",
+    "@waves/ride-js": "^1.0.0",
+    "@waves/waves-transactions": "^3.14.3",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "tslib": "^1.10.0"

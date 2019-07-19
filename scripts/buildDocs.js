@@ -25,9 +25,9 @@ const modulePrefix = '/**\n' +
     ' * @module Interfaces\n' +
     ' */\n';
 const interfacesContent = fs.readFileSync(interfacesIn, "utf8");
-const firstImportIndex = interfacesContent.indexOf('import');
+const firstExportIndex = interfacesContent.indexOf('export');
 fs.writeFileSync(interfacesIn, modulePrefix, "utf-8");
-fs.appendFileSync(interfacesIn, interfacesContent.slice(firstImportIndex), "utf-8")
+fs.appendFileSync(interfacesIn, interfacesContent.slice(firstExportIndex), "utf-8")
 
 
 execSync(`${typedocPath} --listFiles ${interfacesIn} ${mainIn}`);
