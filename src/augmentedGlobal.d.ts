@@ -137,6 +137,13 @@ export function signTx(params: TTx | (TTxParams & WithTxType), seed?: TSeedTypes
 /**
  * Resolves when specified txId is mined into the block
  * By default has 20s timeout and uses current environment node
+ *
+ * ### Usage
+ * ```ts
+ * const tx = .....
+ * await broadcast(tx)
+ * await waitForTx(tx.id)
+ * ```
  */
 export function waitForTx(txId: string, options?: INodeRequestOptions): Promise<TTx>
 
@@ -272,6 +279,21 @@ export interface ISetupAccountsOptions {
  * E.g.: setupAccounts({foo:1000}). Now accounts['foo'] contains seed phrase for account and this account has
  * 1000 wavelets
  * By default uses current environment node and seed as masterSeed
+ *
+ * ### Usage
+ * ```ts
+ * const wvs = 10 ** 8
+ * describe('some suite', () => {
+ *     before(async ()) => {
+ *         await setupAccounts({foo: 1 * wvs, bar: 2 * wvs})
+ *     })
+ *
+ *     it('logs balances', async () => {
+ *         console.log(await balance(address(accounts.foo)))
+ *         console.log(await balance(address(accounts.bar)))
+ *     })
+ * })
+ * ```
  */
 export function setupAccounts(balances: Record<string, number>, options?: ISetupAccountsOptions): Promise<Record<string, string>>
 
