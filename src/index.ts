@@ -132,10 +132,14 @@ export function addEnvFunctionsToGlobal(global: any, options?: { broadcastWrappe
             });
         });
 
-        const mtt = global.massTransfer({transfers}, masterSeed);
-        await global.broadcast(mtt);
-        await global.waitForTx(mtt.id);
-        global.console.log(`Accounts successfully funded`);
+        const totalAmount = transfers.reduce((acc, {amount}) => acc + +amount, 0);
+        if (totalAmount > 0){
+            const mtt = global.massTransfer({transfers}, masterSeed);
+            await global.broadcast(mtt);
+            await global.waitForTx(mtt.id);
+            global.console.log(`Accounts successfully funded`);
+        }
+
         return {...global.env.accounts};
     };
 

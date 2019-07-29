@@ -1,6 +1,6 @@
 {
   "name": "@waves/js-test-env",
-  "version": "0.4.2",
+  "version": "0.5.0",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
