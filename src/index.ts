@@ -28,7 +28,8 @@ export function addEnvFunctionsToGlobal(global: any, options?: { broadcastWrappe
         return (po: wt.TTxParams, seed?: wt.TSeedTypes | null): ReturnType<typeof f> =>
             f({
                     chainId: global.env.CHAIN_ID,
-                    additionalFee: seed === undefined && global.env.isScripted ? 400000 : undefined, ...po
+                    additionalFee: global.env.defaultAdditionalFee,
+                    ...po
                 },
                 seed === null ? null : seed || envSeed() || (() => {
                     throw new Error(NO_SEED_MSG);
