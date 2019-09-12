@@ -36,7 +36,7 @@ import {
     WithId,
     WithTxType,
     INodeRequestOptions,
-    IDataEntry
+    IDataEntry, ITransaction
 } from '@waves/waves-transactions';
 
 /**
@@ -170,6 +170,13 @@ export function currentHeight(apiBase?: string): Promise<number>
  * By default has 20s timeout and uses current environment node
  */
 export function waitForHeight(target: number, options?: INodeRequestOptions): Promise<void>
+
+/**
+ * Get transaction by Id. Returns null if no transaction with such id present in blockchain
+ */
+export function transactionById(txId: string, apiBase?: string): Promise<ITransaction & WithId & {
+    height: number;
+}>;
 
 /**
  * Get account effective balance

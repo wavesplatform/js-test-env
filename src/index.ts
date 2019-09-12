@@ -31,9 +31,7 @@ export function addEnvFunctionsToGlobal(global: any, options?: { broadcastWrappe
                     additionalFee: global.env.defaultAdditionalFee,
                     ...po
                 },
-                seed === null ? null : seed || envSeed() || (() => {
-                    throw new Error(NO_SEED_MSG);
-                })()
+                seed === null ? null : seed || envSeed()
             );
     }
 
@@ -66,6 +64,8 @@ export function addEnvFunctionsToGlobal(global: any, options?: { broadcastWrappe
         wt.nodeInteraction.waitNBlocks(blocksCount, withDefaults(options));
     global.currentHeight = (apiBase?: string) =>
         wt.nodeInteraction.currentHeight(apiBase || global.env.API_BASE);
+    global.transactionById = (txId: string, apiBase?: string) =>
+        wt.nodeInteraction.transactionById(txId, apiBase || global.env.API_BASE);
     global.waitForHeight = (target: number, options?: INodeRequestOptions) =>
         wt.nodeInteraction.waitForHeight(target, withDefaults(options));
     global.balance = (address?: string, apiBase?: string) =>
