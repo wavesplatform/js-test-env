@@ -1,8 +1,9 @@
 import * as wt from '@waves/waves-transactions';
-import { IMassTransferItem, INodeRequestOptions } from '@waves/waves-transactions';
+import { broadcast, IMassTransferItem, INodeRequestOptions, invokeScript } from '@waves/waves-transactions';
 import { compile as cmpl } from '@waves/ride-js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
+import { IInvokeArgument, IInvokeOptions, IPayment } from './augmentedGlobal';
 
 chai.use(chaiAsPromised);
 
@@ -103,6 +104,38 @@ export function addEnvFunctionsToGlobal(global: any, options?: { broadcastWrappe
         return resultOrError.result.base64;
     };
 
+    global.invoke = ({dApp, functionName, arguments: argsOpt, payment: paymentOpt}: IInvokeOptions, seed?: string) => {
+        let payment: IPayment[] = [], args: IInvokeArgument[] = [];
+
+        const isIInvokeArgument = (arg: any): arg is IInvokeArgument =>
+            typeof arg === 'object' && !Array.isArray(arg) && 'type' in arg && 'value' in arg;
+
+        if (typeof paymentOpt === 'number') payment = [{assetId: null, amount: paymentOpt}];
+        if (typeof paymentOpt === 'object' && !Array.isArray(paymentOpt)) payment = [paymentOpt];
+        if (typeof paymentOpt === 'object' && Array.isArray(paymentOpt)) payment = paymentOpt;
+        args = (argsOpt || []).map((arg) => {
+            //number
+            if (typeof arg === 'number') return {type: 'integer', value: arg};
+            //string
+            if (typeof arg === 'string') return {type: 'string', value: arg};
+            //boolean
+            if (typeof arg === 'boolean') return {type: 'boolean', value: arg};
+            //Uint8Array
+            if (typeof paymentOpt === 'object' && !Array.isArray(paymentOpt)) return {type: 'binary', value: arg};
+            //number[]
+            if (typeof arg === 'object' && Array.isArray(arg) && arg.length > 0 && typeof arg[0] === 'number') {
+                return {type: 'binary', value: new Uint8Array(arg)};
+            }
+            //IInvokeArgument
+            if (isIInvokeArgument(arg)) return arg;
+            return null;
+        }).filter((v): v is IInvokeArgument => v != null);
+        const params: wt.IInvokeScriptParams = {dApp, feeAssetId: null, call: {function: functionName, args}, payment};
+        const tx = invokeScript(params, seed || envSeed());
+        return broadcast(tx, '')
+
+    };
+
     global.signBytes = (bytes: Uint8Array, seed?: string) =>
         wt.libs.crypto.signBytes(bytes, seed || envSeed());
 
@@ -134,7 +167,7 @@ export function addEnvFunctionsToGlobal(global: any, options?: { broadcastWrappe
         });
 
         const totalAmount = transfers.reduce((acc, {amount}) => acc + +amount, 0);
-        if (totalAmount > 0){
+        if (totalAmount > 0) {
             const mtt = global.massTransfer({transfers}, masterSeed);
             await global.broadcast(mtt);
             await global.waitForTx(mtt.id);
