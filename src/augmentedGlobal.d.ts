@@ -7,6 +7,7 @@ import {
     ICancelLeaseTransaction,
     ICancelOrder,
     ICancelOrderParams,
+    IDataEntry,
     IDataParams,
     IDataTransaction,
     IInvokeScriptParams,
@@ -15,9 +16,9 @@ import {
     IIssueTransaction,
     ILeaseParams,
     ILeaseTransaction,
-    IMassTransferItem,
     IMassTransferParams,
     IMassTransferTransaction,
+    INodeRequestOptions,
     IOrderParams,
     IReissueParams,
     IReissueTransaction,
@@ -27,6 +28,7 @@ import {
     ISetScriptTransaction,
     ISponsorshipParams,
     ISponsorshipTransaction,
+    ITransaction,
     ITransferParams,
     ITransferTransaction,
     TOrder,
@@ -35,8 +37,6 @@ import {
     TTxParams,
     WithId,
     WithTxType,
-    INodeRequestOptions,
-    IDataEntry, ITransaction
 } from '@waves/waves-transactions';
 
 /**
@@ -265,8 +265,37 @@ export function compile(code: string): string
  * Signs arbitrary bytes
  * By default uses current environment seed and chainId
  */
-export function signBytes(bytes: Uint8Array, seed?: string): string
+export function signBytes(bytes: Uint8Array, seed?: string): string;
 
+export interface IPayment {
+    assetId?: string | null
+    amount: number
+}
+
+export interface IPayment {
+    assetId?: string | null
+    amount: number
+}
+
+interface IInvokeArgument {
+    /**
+     * possible values:   "string" | "number" | "binary" | "boolean"
+     */
+    type: string,
+    value: string | number | boolean
+}
+
+export interface IInvokeOptions {
+    dApp: string
+    functionName: string
+    arguments?: (number | string | boolean | Uint8Array | number[] | IInvokeArgument)[]
+    payment?: IPayment | IPayment[] | number
+}
+
+/**
+ * Creates invoke tx and broadcasts it
+ * */
+export function invoke(options: IInvokeOptions, seed?: string, apiBase?: string): Promise<any>;
 
 export interface ISetupAccountsOptions {
     /**
@@ -333,3 +362,4 @@ export module wavesCrypto {
 export module chai {
 
 }
+

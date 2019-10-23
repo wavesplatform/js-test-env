@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ISetupAccountsOptions | js-test-env</title>
+	<title>IInvokeOptions | js-test-env</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,10 +52,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="isetupaccountsoptions.html">ISetupAccountsOptions</a>
+					<a href="iinvokeoptions.html">IInvokeOptions</a>
 				</li>
 			</ul>
-			<h1>Interface ISetupAccountsOptions</h1>
+			<h1>Interface IInvokeOptions</h1>
 		</div>
 	</div>
 </header>
@@ -66,7 +66,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ISetupAccountsOptions</span>
+						<span class="target">IInvokeOptions</span>
 					</li>
 				</ul>
 			</section>
@@ -77,8 +77,10 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="isetupaccountsoptions.html#masterseed" class="tsd-kind-icon">master<wbr>Seed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="isetupaccountsoptions.html#nonce" class="tsd-kind-icon">nonce</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinvokeoptions.html#arguments" class="tsd-kind-icon">arguments</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinvokeoptions.html#dapp" class="tsd-kind-icon">d<wbr>App</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinvokeoptions.html#functionname" class="tsd-kind-icon">function<wbr>Name</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinvokeoptions.html#payment" class="tsd-kind-icon">payment</a></li>
 							</ul>
 						</section>
 					</div>
@@ -87,36 +89,44 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="masterseed" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> master<wbr>Seed</h3>
-					<div class="tsd-signature tsd-kind-icon">master<wbr>Seed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="arguments" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> arguments</h3>
+					<div class="tsd-signature tsd-kind-icon">arguments<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-symbol">(</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">IInvokeArgument</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wavesplatform/js-test-env/blob/ffdda6d/src/augmentedGlobal.d.ts#L310">src/augmentedGlobal.d.ts:310</a></li>
+							<li>Defined in <a href="https://github.com/wavesplatform/js-test-env/blob/ffdda6d/src/augmentedGlobal.d.ts#L291">src/augmentedGlobal.d.ts:291</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Seed phrase for account, from which waves will be transferred to generated accounts.
-							If not set current account will be used</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="nonce" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> nonce</h3>
-					<div class="tsd-signature tsd-kind-icon">nonce<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="dapp" class="tsd-anchor"></a>
+					<h3>d<wbr>App</h3>
+					<div class="tsd-signature tsd-kind-icon">d<wbr>App<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wavesplatform/js-test-env/blob/ffdda6d/src/augmentedGlobal.d.ts#L305">src/augmentedGlobal.d.ts:305</a></li>
+							<li>Defined in <a href="https://github.com/wavesplatform/js-test-env/blob/ffdda6d/src/augmentedGlobal.d.ts#L289">src/augmentedGlobal.d.ts:289</a></li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Generated accounts have seed like &#39;name#&#39; + nonce. E.g.: foo#ff4682. By default nonce is chosen randomly
-							you can set nonce to have consistent seeds between tests</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="functionname" class="tsd-anchor"></a>
+					<h3>function<wbr>Name</h3>
+					<div class="tsd-signature tsd-kind-icon">function<wbr>Name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wavesplatform/js-test-env/blob/ffdda6d/src/augmentedGlobal.d.ts#L290">src/augmentedGlobal.d.ts:290</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="payment" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> payment</h3>
+					<div class="tsd-signature tsd-kind-icon">payment<span class="tsd-signature-symbol">:</span> <a href="ipayment.html" class="tsd-signature-type">IPayment</a><span class="tsd-signature-symbol"> | </span><a href="ipayment.html" class="tsd-signature-type">IPayment</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/wavesplatform/js-test-env/blob/ffdda6d/src/augmentedGlobal.d.ts#L292">src/augmentedGlobal.d.ts:292</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -133,13 +143,19 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="isetupaccountsoptions.html" class="tsd-kind-icon">ISetup<wbr>Accounts<wbr>Options</a>
+						<a href="iinvokeoptions.html" class="tsd-kind-icon">IInvoke<wbr>Options</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="isetupaccountsoptions.html#masterseed" class="tsd-kind-icon">master<wbr>Seed</a>
+								<a href="iinvokeoptions.html#arguments" class="tsd-kind-icon">arguments</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="isetupaccountsoptions.html#nonce" class="tsd-kind-icon">nonce</a>
+								<a href="iinvokeoptions.html#dapp" class="tsd-kind-icon">d<wbr>App</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="iinvokeoptions.html#functionname" class="tsd-kind-icon">function<wbr>Name</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="iinvokeoptions.html#payment" class="tsd-kind-icon">payment</a>
 							</li>
 						</ul>
 					</li>
