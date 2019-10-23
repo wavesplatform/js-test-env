@@ -1,5 +1,5 @@
 import * as wt from '@waves/waves-transactions';
-import { broadcast, IMassTransferItem, INodeRequestOptions, invokeScript } from '@waves/waves-transactions';
+import { IMassTransferItem, INodeRequestOptions } from '@waves/waves-transactions';
 import { compile as cmpl } from '@waves/ride-js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
@@ -104,36 +104,38 @@ export function addEnvFunctionsToGlobal(global: any, options?: { broadcastWrappe
         return resultOrError.result.base64;
     };
 
-    global.invoke = ({dApp, functionName, arguments: argsOpt, payment: paymentOpt}: IInvokeOptions, seed?: string) => {
-        let payment: IPayment[] = [], args: IInvokeArgument[] = [];
-
-        const isIInvokeArgument = (arg: any): arg is IInvokeArgument =>
-            typeof arg === 'object' && !Array.isArray(arg) && 'type' in arg && 'value' in arg;
-
+    global.invoke = ({dApp, functionName, arguments: argsOpt, payment: paymentOpt}: IInvokeOptions, seed?: string, apiBase?: string) => {
+        let payment: IPayment[] = [];
         if (typeof paymentOpt === 'number') payment = [{assetId: null, amount: paymentOpt}];
         if (typeof paymentOpt === 'object' && !Array.isArray(paymentOpt)) payment = [paymentOpt];
         if (typeof paymentOpt === 'object' && Array.isArray(paymentOpt)) payment = paymentOpt;
-        args = (argsOpt || []).map((arg) => {
+
+        const isIInvokeArgument = (arg: any): arg is IInvokeArgument =>
+            typeof arg === 'object' && 'type' in arg && 'value' in arg;
+
+        const decoder = new TextDecoder('utf8');
+        const args: IInvokeArgument[] = (argsOpt || []).map((arg) => {
             //number
             if (typeof arg === 'number') return {type: 'integer', value: arg};
             //string
             if (typeof arg === 'string') return {type: 'string', value: arg};
             //boolean
             if (typeof arg === 'boolean') return {type: 'boolean', value: arg};
-            //Uint8Array
-            if (typeof paymentOpt === 'object' && !Array.isArray(paymentOpt)) return {type: 'binary', value: arg};
-            //number[]
-            if (typeof arg === 'object' && Array.isArray(arg) && arg.length > 0 && typeof arg[0] === 'number') {
-                return {type: 'binary', value: new Uint8Array(arg)};
-            }
             //IInvokeArgument
             if (isIInvokeArgument(arg)) return arg;
+            //Uint8Array
+            if (typeof arg === 'object' && !Array.isArray(arg)) {
+                return {type: 'binary', value: btoa(decoder.decode(arg as Uint8Array))};
+            }
+            //number[]
+            if (typeof arg === 'object' && Array.isArray(arg) && arg.length > 0 && typeof arg[0] === 'number') {
+                return {type: 'binary', value: btoa(decoder.decode(Uint8Array.from(arg)))};
+            }
             return null;
         }).filter((v): v is IInvokeArgument => v != null);
-        const params: wt.IInvokeScriptParams = {dApp, feeAssetId: null, call: {function: functionName, args}, payment};
-        const tx = invokeScript(params, seed || envSeed());
-        return broadcast(tx, '')
-
+        const params = {dApp, feeAssetId: null, call: {function: functionName, args}, payment};
+        const tx = global.invokeScript(params, seed || envSeed());
+        return global.broadcast(tx, apiBase || global.env.API_BASE);
     };
 
     global.signBytes = (bytes: Uint8Array, seed?: string) =>
