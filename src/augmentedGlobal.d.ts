@@ -278,6 +278,10 @@ export interface IPayment {
 }
 
 interface IInvokeArgument {
+
+    /**
+     *possible values:   "string" | "number" | "binary" | "boolean"
+     * */
     type: string,
     value: string | number | boolean
 }
