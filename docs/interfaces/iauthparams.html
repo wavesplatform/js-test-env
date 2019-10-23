@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ISetupAccountsOptions | js-test-env</title>
+	<title>IAuthParams | js-test-env</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,10 +52,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="isetupaccountsoptions.html">ISetupAccountsOptions</a>
+					<a href="iauthparams.html">IAuthParams</a>
 				</li>
 			</ul>
-			<h1>Interface ISetupAccountsOptions</h1>
+			<h1>Interface IAuthParams</h1>
 		</div>
 	</div>
 </header>
@@ -66,7 +66,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ISetupAccountsOptions</span>
+						<span class="target">IAuthParams</span>
 					</li>
 				</ul>
 			</section>
@@ -77,8 +77,9 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="isetupaccountsoptions.html#masterseed" class="tsd-kind-icon">master<wbr>Seed</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="isetupaccountsoptions.html#nonce" class="tsd-kind-icon">nonce</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iauthparams.html#data" class="tsd-kind-icon">data</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iauthparams.html#host" class="tsd-kind-icon">host</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iauthparams.html#publickey" class="tsd-kind-icon">public<wbr>Key</a></li>
 							</ul>
 						</section>
 					</div>
@@ -87,36 +88,34 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="masterseed" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> master<wbr>Seed</h3>
-					<div class="tsd-signature tsd-kind-icon">master<wbr>Seed<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="data" class="tsd-anchor"></a>
+					<h3>data</h3>
+					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wavesplatform/js-test-env/blob/981ad57/src/augmentedGlobal.d.ts#L307">src/augmentedGlobal.d.ts:307</a></li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:409</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Seed phrase for account, from which waves will be transferred to generated accounts.
-							If not set current account will be used</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="nonce" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagOptional">Optional</span> nonce</h3>
-					<div class="tsd-signature tsd-kind-icon">nonce<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<a name="host" class="tsd-anchor"></a>
+					<h3>host</h3>
+					<div class="tsd-signature tsd-kind-icon">host<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/wavesplatform/js-test-env/blob/981ad57/src/augmentedGlobal.d.ts#L302">src/augmentedGlobal.d.ts:302</a></li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:410</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Generated accounts have seed like &#39;name#&#39; + nonce. E.g.: foo#ff4682. By default nonce is chosen randomly
-							you can set nonce to have consistent seeds between tests</p>
-						</div>
-					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="publickey" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> public<wbr>Key</h3>
+					<div class="tsd-signature tsd-kind-icon">public<wbr>Key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:411</li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -133,13 +132,16 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface">
-						<a href="isetupaccountsoptions.html" class="tsd-kind-icon">ISetup<wbr>Accounts<wbr>Options</a>
+						<a href="iauthparams.html" class="tsd-kind-icon">IAuth<wbr>Params</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="isetupaccountsoptions.html#masterseed" class="tsd-kind-icon">master<wbr>Seed</a>
+								<a href="iauthparams.html#data" class="tsd-kind-icon">data</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="isetupaccountsoptions.html#nonce" class="tsd-kind-icon">nonce</a>
+								<a href="iauthparams.html#host" class="tsd-kind-icon">host</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="iauthparams.html#publickey" class="tsd-kind-icon">public<wbr>Key</a>
 							</li>
 						</ul>
 					</li>

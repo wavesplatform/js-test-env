@@ -278,7 +278,7 @@ export interface IPayment {
 }
 
 interface IInvokeArgument {
-    type: 'binary' | 'integer' | 'boolean' | 'string',
+    type: string,
     value: string | number | boolean
 }
 
@@ -292,8 +292,7 @@ export interface IInvokeOptions {
 /**
  * Creates invoke tx and broadcasts it
  * */
-
-export function invoke(options: IInvokeOptions, seed?: string): Promise<any>;
+export function invoke(options: IInvokeOptions, seed?: string, apiBase?: string): Promise<any>;
 
 export interface ISetupAccountsOptions {
     /**
