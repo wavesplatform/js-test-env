@@ -3,6 +3,7 @@ import { IMassTransferItem, INodeRequestOptions } from '@waves/waves-transaction
 import { compile as cmpl } from '@waves/ride-js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
+import { IInvokeArgument, IInvokeOptions, IPayment } from './augmentedGlobal';
 
 chai.use(chaiAsPromised);
 
@@ -168,7 +169,7 @@ export default function augment(global: any, options?: { broadcastWrapper?: (f: 
         });
 
         const totalAmount = transfers.reduce((acc, {amount}) => acc + +amount, 0);
-        if (totalAmount > 0){
+        if (totalAmount > 0) {
             const mtt = global.massTransfer({transfers}, masterSeed);
             await global.broadcast(mtt);
             await global.waitForTx(mtt.id);
