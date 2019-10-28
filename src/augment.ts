@@ -8,7 +8,7 @@ chai.use(chaiAsPromised);
 
 const NO_SEED_MSG = `Seed is undefined. Please check that you have seed in your config file or web ide settings`;
 
-export function addEnvFunctionsToGlobal(global: any, options?: { broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast }) {
+export default function augment(global: any, options?: { broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast }) {
     function withDefaults(options: INodeRequestOptions = {}) {
         return {
             timeout: options.timeout || global.env.timeout || 20000,

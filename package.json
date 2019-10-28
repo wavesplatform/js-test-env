@@ -7,7 +7,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildDocs": "node ./scripts/buildDocs.js",
-    "prepublishOnly": "tsc && cp src/augmentedGlobal.d.ts dist/augmentedGlobal.d.ts"
+    "compileAugment": "tsc src/augment.ts --esModuleInterop --declaration --outDir dist",
+    "copyIndex": "cp src/index.d.ts dist/index.d.ts && cp src/index.js dist/index.js",
+    "copyPackageJson": "node ./scripts/copyPackageJson",
+    "build": "npm run compileAugment && npm run copyIndex",
+    "preversion": "npm run build && npm run buildDocs"
   },
   "repository": {
     "type": "git",
