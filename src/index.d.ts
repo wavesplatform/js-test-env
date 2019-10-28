@@ -291,6 +291,36 @@ declare global {
         masterSeed?: string,
     }
 
+    export interface IPayment {
+        assetId?: string | null
+        amount: number
+    }
+
+    export interface IPayment {
+        assetId?: string | null
+        amount: number
+    }
+
+    interface IInvokeArgument {
+        /**
+         * possible values:   "string" | "number" | "binary" | "boolean"
+         */
+        type: string,
+        value: string | number | boolean
+    }
+
+    export interface IInvokeOptions {
+        dApp: string
+        functionName: string
+        arguments?: (number | string | boolean | Uint8Array | number[] | IInvokeArgument)[]
+        payment?: IPayment | IPayment[] | number
+    }
+
+    /**
+     * Creates invoke tx and broadcasts it
+     * */
+    export function invoke(options: IInvokeOptions, seed?: string, apiBase?: string): Promise<any>;
+
     /**
      * Generates test accounts with balances. Sends waves to generated accounts from master seed. Saves account seeds `accounts`
      * E.g.: setupAccounts({foo:1000}). Now accounts['foo'] contains seed phrase for account and this account has
