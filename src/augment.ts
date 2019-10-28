@@ -3,13 +3,12 @@ import { IMassTransferItem, INodeRequestOptions } from '@waves/waves-transaction
 import { compile as cmpl } from '@waves/ride-js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import { IInvokeArgument, IInvokeOptions, IPayment } from './augmentedGlobal';
 
 chai.use(chaiAsPromised);
 
 const NO_SEED_MSG = `Seed is undefined. Please check that you have seed in your config file or web ide settings`;
 
-export function addEnvFunctionsToGlobal(global: any, options?: { broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast }) {
+export default function augment(global: any, options?: { broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast }) {
     function withDefaults(options: INodeRequestOptions = {}) {
         return {
             timeout: options.timeout || global.env.timeout || 20000,
@@ -180,4 +179,29 @@ export function addEnvFunctionsToGlobal(global: any, options?: { broadcastWrappe
     };
 
 
+}
+
+export interface IPayment {
+    assetId?: string | null
+    amount: number
+}
+
+export interface IPayment {
+    assetId?: string | null
+    amount: number
+}
+
+interface IInvokeArgument {
+    /**
+     * possible values:   "string" | "number" | "binary" | "boolean"
+     */
+    type: string,
+    value: string | number | boolean
+}
+
+export interface IInvokeOptions {
+    dApp: string
+    functionName: string
+    arguments?: (number | string | boolean | Uint8Array | number[] | IInvokeArgument)[]
+    payment?: IPayment | IPayment[] | number
 }
