@@ -3,7 +3,6 @@ import { IMassTransferItem, INodeRequestOptions } from '@waves/waves-transaction
 import { compile as cmpl } from '@waves/ride-js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
-import { IInvokeArgument, IInvokeOptions, IPayment } from './augmentedGlobal';
 
 chai.use(chaiAsPromised);
 
