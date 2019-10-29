@@ -1,6 +1,6 @@
 {
   "name": "@waves/js-test-env",
-  "version": "0.7.3",
+  "version": "0.7.4",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -8,9 +8,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildDocs": "node ./scripts/buildDocs.js",
     "compileAugment": "tsc src/augment.ts --esModuleInterop --declaration --outDir dist",
-    "copyIndex": "cp src/index.d.ts dist/index.d.ts && cp src/index.js dist/index.js",
+    "copyFiles": "cp src/index.d.ts dist/index.d.ts && cp src/index.js dist/index.js && cp README.md dist",
     "copyPackageJson": "node ./scripts/copyPackageJson",
-    "build": "npm run compileAugment && npm run copyIndex && npm run copyPackageJson",
+    "build": "npm run compileAugment && npm run copyFiles && npm run copyPackageJson",
     "prepublishOnly": "node ./scripts/checkFolder"
   },
   "repository": {
