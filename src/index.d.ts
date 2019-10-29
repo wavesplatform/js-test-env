@@ -46,7 +46,6 @@ declare global {
         API_BASE: string,
         SEED: string,
         CHAIN_ID: string,
-        accounts: Record<string, string>
     }
    ///splice-end
     /**

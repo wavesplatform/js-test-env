@@ -8,7 +8,14 @@ chai.use(chaiAsPromised);
 
 const NO_SEED_MSG = `Seed is undefined. Please check that you have seed in your config file or web ide settings`;
 
-export default function augment(global: any, options?: { broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast }) {
+export type TSetupAccountsFunc = (balances: Record<string, number>, options?: {masterSeed: string, nonce: string}) =>
+    Promise<Record<string, string>>
+
+export interface IAugmentOptions  {
+    broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast
+    setupAccountsWrapper?: (f : TSetupAccountsFunc) => TSetupAccountsFunc
+}
+export default function augment(global: any, options?: IAugmentOptions) {
     function withDefaults(options: INodeRequestOptions = {}) {
         return {
             timeout: options.timeout || global.env.timeout || 20000,
@@ -140,7 +147,7 @@ export default function augment(global: any, options?: { broadcastWrapper?: (f: 
     global.signBytes = (bytes: Uint8Array, seed?: string) =>
         wt.libs.crypto.signBytes(bytes, seed || envSeed());
 
-    global.setupAccounts = async (balances: Record<string, number>, options?: any) => {
+    const setupAccountsFunc = async (balances: Record<string, number>, options?: any): Promise<Record<string, string>> => {
         if (!global.accounts) global.accounts = {};
 
         const getNonce = () => [].map.call(
@@ -175,9 +182,12 @@ export default function augment(global: any, options?: { broadcastWrapper?: (f: 
             global.console.log(`Accounts successfully funded`);
         }
 
-        return {...global.env.accounts};
+        return {...global.accounts};
     };
 
+    global.setupAccounts = options && options.setupAccountsWrapper
+        ? options.setupAccountsWrapper(setupAccountsFunc)
+        : setupAccountsFunc
 
 }
 
