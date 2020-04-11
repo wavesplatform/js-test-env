@@ -16,7 +16,7 @@ export interface IAugmentOptions  {
     setupAccountsWrapper?: (f : TSetupAccountsFunc) => TSetupAccountsFunc
 }
 export default function augment(global: any, options?: IAugmentOptions) {
-    function withDefaults(options: INodeRequestOptions = {}) {
+    function withDefaults(options: INodeRequestOptions = {apiBase: global.env.API_BASE}) {
         return {
             timeout: options.timeout || global.env.timeout || 20000,
             apiBase: options.apiBase || global.env.API_BASE

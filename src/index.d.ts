@@ -154,13 +154,13 @@ declare global {
      * await waitForTx(tx.id)
      * ```
      */
-    export function waitForTx(txId: string, options?: INodeRequestOptions): Promise<TTx>
+    export function waitForTx(txId: string, options?: INodeRequestOptions): Promise<TTx & {applicationStatus?: 'succeed' | 'scriptExecutionFailed'}>
 
     /**
      * Resolves N blocks after specified txId is mined into the block
      * By default has 20s timeout and uses current environment node
      */
-    export function waitForTxWithNConfirmations(txId: string, confirmations: number, options?: INodeRequestOptions): Promise<TTx>
+    export function waitForTxWithNConfirmations(txId: string, confirmations: number, options?: INodeRequestOptions): Promise<TTx & {applicationStatus?: 'succeed' | 'scriptExecutionFailed'}>
 
     /**
      * Resolves N blocks after current blockchain height
