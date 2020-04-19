@@ -36,7 +36,7 @@ import {
     WithId,
     WithTxType,
     INodeRequestOptions,
-    IDataEntry, ITransaction
+    TDataEntry, ITransaction, IUpdateAssetInfoParams, IUpdateAssetInfoTransaction
 } from '@waves/waves-transactions';
 
 ///splice-start
@@ -137,6 +137,12 @@ declare global {
     export function sponsorship(params: ISponsorshipParams, seed?: TSeedTypes): ISponsorshipTransaction & WithId
 
     /**
+     * Creates updateAssetInfo transaction or signs already formed one
+     */
+    export function updateAssetInfo(params: IUpdateAssetInfoParams, seed?: TSeedTypes): IUpdateAssetInfoTransaction & WithId
+
+
+    /**
      * Signs arbitrary transaction
      */
     export function signTx(params: TTx | (TTxParams & WithTxType), seed?: TSeedTypes): TTx
@@ -209,13 +215,13 @@ declare global {
      * Get full account dictionary
      * By default uses current environment address and node
      */
-    export function accountData(address?: string, apiBase?: string): Promise<Record<string, IDataEntry>>
+    export function accountData(address?: string, apiBase?: string): Promise<Record<string, TDataEntry>>
 
     /**
      * Get data from account dictionary by key
      * By default uses current environment address and node
      */
-    export function accountDataByKey(key: string, address?: string, apiBase?: string): Promise<IDataEntry>
+    export function accountDataByKey(key: string, address?: string, apiBase?: string): Promise<TDataEntry>
 
     /**
      * Get invokeScript tx state changes

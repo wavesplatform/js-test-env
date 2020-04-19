@@ -193,6 +193,7 @@
 								<li class="tsd-kind-function"><a href="globals.html#statechanges" class="tsd-kind-icon">state<wbr>Changes</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#transactionbyid" class="tsd-kind-icon">transaction<wbr>ById</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#transfer" class="tsd-kind-icon">transfer</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#updateassetinfo" class="tsd-kind-icon">update<wbr>Asset<wbr>Info</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#waitforheight" class="tsd-kind-icon">wait<wbr>For<wbr>Height</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#waitfortx" class="tsd-kind-icon">wait<wbr>For<wbr>Tx</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#waitfortxwithnconfirmations" class="tsd-kind-icon">wait<wbr>For<wbr>TxWithNConfirmations</a></li>
@@ -361,13 +362,13 @@
 					<a name="accountdata" class="tsd-anchor"></a>
 					<h3>account<wbr>Data</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">account<wbr>Data<span class="tsd-signature-symbol">(</span>address<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, apiBase<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">IDataEntry</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">account<wbr>Data<span class="tsd-signature-symbol">(</span>address<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, apiBase<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="globals.html#tdataentry" class="tsd-signature-type">TDataEntry</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:204</li>
+									<li>Defined in build/global.d.ts:210</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -385,7 +386,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> apiBase: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">IDataEntry</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="globals.html#tdataentry" class="tsd-signature-type">TDataEntry</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -393,13 +394,13 @@
 					<a name="accountdatabykey" class="tsd-anchor"></a>
 					<h3>account<wbr>Data<wbr>ByKey</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">account<wbr>Data<wbr>ByKey<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, address<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, apiBase<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IDataEntry</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">account<wbr>Data<wbr>ByKey<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, address<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, apiBase<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="globals.html#tdataentry" class="tsd-signature-type">TDataEntry</a><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:210</li>
+									<li>Defined in build/global.d.ts:216</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -420,7 +421,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> apiBase: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">IDataEntry</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="globals.html#tdataentry" class="tsd-signature-type">TDataEntry</a><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -434,7 +435,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:258</li>
+									<li>Defined in build/global.d.ts:264</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -501,7 +502,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:192</li>
+									<li>Defined in build/global.d.ts:198</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -536,7 +537,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:186</li>
+									<li>Defined in build/global.d.ts:192</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -568,7 +569,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:198</li>
+									<li>Defined in build/global.d.ts:204</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -600,7 +601,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:222</li>
+									<li>Defined in build/global.d.ts:228</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -731,7 +732,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:263</li>
+									<li>Defined in build/global.d.ts:269</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -759,7 +760,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:234</li>
+									<li>Defined in build/global.d.ts:240</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -781,7 +782,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:167</li>
+									<li>Defined in build/global.d.ts:173</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -844,7 +845,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:341</li>
+									<li>Defined in build/global.d.ts:347</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -875,7 +876,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:229</li>
+									<li>Defined in build/global.d.ts:235</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -903,7 +904,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:313</li>
+									<li>Defined in build/global.d.ts:319</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1005,7 +1006,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:240</li>
+									<li>Defined in build/global.d.ts:246</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1138,7 +1139,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:252</li>
+									<li>Defined in build/global.d.ts:258</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1167,7 +1168,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:246</li>
+									<li>Defined in build/global.d.ts:252</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1298,7 +1299,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:336</li>
+									<li>Defined in build/global.d.ts:342</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1346,7 +1347,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:269</li>
+									<li>Defined in build/global.d.ts:275</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1378,7 +1379,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:134</li>
+									<li>Defined in build/global.d.ts:140</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1443,7 +1444,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:216</li>
+									<li>Defined in build/global.d.ts:222</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1475,7 +1476,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:178</li>
+									<li>Defined in build/global.d.ts:184</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1531,6 +1532,40 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="updateassetinfo" class="tsd-anchor"></a>
+					<h3>update<wbr>Asset<wbr>Info</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Asset<wbr>Info<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/iupdateassetinfoparams.html" class="tsd-signature-type">IUpdateAssetInfoParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="interfaces/iupdateassetinfotransaction.html" class="tsd-signature-type">IUpdateAssetInfoTransaction</a><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in build/global.d.ts:134</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Creates updateAssetInfo transaction or signs already formed one</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>params: <a href="interfaces/iupdateassetinfoparams.html" class="tsd-signature-type">IUpdateAssetInfoParams</a></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="interfaces/iupdateassetinfotransaction.html" class="tsd-signature-type">IUpdateAssetInfoTransaction</a>
+								<span class="tsd-signature-symbol"> &amp; </span>
+								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
+							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="waitforheight" class="tsd-anchor"></a>
 					<h3>wait<wbr>For<wbr>Height</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -1540,7 +1575,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:173</li>
+									<li>Defined in build/global.d.ts:179</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1572,7 +1607,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:149</li>
+									<li>Defined in build/global.d.ts:155</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1610,7 +1645,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:155</li>
+									<li>Defined in build/global.d.ts:161</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1645,7 +1680,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:161</li>
+									<li>Defined in build/global.d.ts:167</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1999,6 +2034,9 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#transfer" class="tsd-kind-icon">transfer</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#updateassetinfo" class="tsd-kind-icon">update<wbr>Asset<wbr>Info</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#waitforheight" class="tsd-kind-icon">wait<wbr>For<wbr>Height</a>

@@ -62,6 +62,7 @@ export default function augment(global: any, options?: IAugmentOptions) {
     global.invokeScript = injectEnv(wt.invokeScript);
     global.sponsorship = injectEnv(wt.sponsorship);
     global.signTx = injectEnv(wt.signTx);
+    global.updateAssetInfo = injectEnv(wt.updateAssetInfo);
 
     global.waitForTx = async (txId: string, options?: INodeRequestOptions) =>
         wt.nodeInteraction.waitForTx(txId, withDefaults(options));
