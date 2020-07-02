@@ -105,7 +105,7 @@ export default function augment(global: any, options?: IAugmentOptions) {
     global.privateKey = (seed?: string) => wt.libs.crypto.keyPair(seed || envSeed()).privateKey;
     global.address = (seed?: string, chainId?: string) => wt.libs.crypto.address(seed || envSeed(), chainId || global.env.CHAIN_ID);
     global.compile = (code: string) => {
-        const resultOrError = cmpl(code);
+        const resultOrError = cmpl(code, 3);
         if ('error' in resultOrError) throw new Error(resultOrError.error);
 
         return resultOrError.result.base64;
