@@ -60,6 +60,55 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
+				<a href="#testing-environment-form-waves-blockchain" id="testing-environment-form-waves-blockchain" style="color: inherit; text-decoration: none;">
+					<h1>Testing environment form WAVES blockchain</h1>
+				</a>
+				<a href="#how-to-" id="how-to-" style="color: inherit; text-decoration: none;">
+					<h3>How to ?</h3>
+				</a>
+				<p>Import package and write typescript/javascript code, interacting with waves blockchain. Package contains all global type definitions.</p>
+				<a href="#example-using-mocha-test-runner" id="example-using-mocha-test-runner" style="color: inherit; text-decoration: none;">
+					<h4>Example using mocha test runner</h4>
+				</a>
+				<pre><code class="language-typescript"><span class="hljs-keyword">import</span> <span class="hljs-string">'@waves/js-test-env'</span>;
+
+env.API_BASE = <span class="hljs-string">"http://localhost:6869/"</span>;
+env.CHAIN_ID = <span class="hljs-string">"R"</span>;
+env.SEED = <span class="hljs-string">"waves private node seed with waves tokens"</span>;
+
+describe(<span class="hljs-string">'My first test suite'</span>, <span class="hljs-function"><span class="hljs-params">()</span> =&gt;</span> {
+    <span class="hljs-keyword">const</span> wvs = <span class="hljs-number">10</span> ** <span class="hljs-number">8</span>;
+    before(<span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">this</span>.timeout(<span class="hljs-number">0</span>);
+        <span class="hljs-keyword">await</span> setupAccounts({foo: <span class="hljs-number">0.001</span> * wvs, bar: <span class="hljs-number">0.001</span> * wvs});
+    });
+
+    it(<span class="hljs-string">'Assertions'</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">const</span> ttx = transfer({amount: <span class="hljs-number">100000000000000</span>, recipient: address()}, accounts.foo)
+        expect(ttx.proofs.length).to.equal(<span class="hljs-number">1</span>)
+        <span class="hljs-keyword">await</span> expect(broadcast(ttx)).rejectedWith()
+    })
+    <span class="hljs-comment">// And define tests inside suites</span>
+    <span class="hljs-comment">// As you can see, we can use async functions to write async tests. sync functions have default timeout = 20s</span>
+    it(<span class="hljs-string">'Aks balance and height'</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-comment">// You can set timeout. If you set it to zero, test won't finish untill function resolves</span>
+        <span class="hljs-keyword">this</span>.timeout(<span class="hljs-number">0</span>);
+        <span class="hljs-comment">// You can ask balance or currentHeigh</span>
+        <span class="hljs-keyword">const</span> b = <span class="hljs-keyword">await</span> balance();
+        <span class="hljs-keyword">const</span> h = <span class="hljs-keyword">await</span> currentHeight();
+        <span class="hljs-comment">// Console methods avalilable in test. Everything will be printed in repl</span>
+        <span class="hljs-built_in">console</span>.log(b, h)
+    })
+
+    it(<span class="hljs-string">'Assertions'</span>, <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> (<span class="hljs-params"></span>) </span>{
+        <span class="hljs-keyword">const</span> ttx = transfer({amount: <span class="hljs-number">100000000000000</span>, recipient: address()}, accounts.foo)
+        <span class="hljs-comment">// Synchronous assertion</span>
+        expect(ttx.proofs.length).to.equal(<span class="hljs-number">1</span>)
+        <span class="hljs-comment">// Async assertion. Expect broadcast to fail</span>
+        <span class="hljs-keyword">await</span> expect(broadcast(ttx)).rejectedWith()
+    })
+})
+</code></pre>
 				<a href="#a-hrefhttpswavesplatformgithubiojs-test-envglobalshtmlherea-you-can-find-list-of-all-globally-available-functions-for-ride-test-environment-and-repl" id="a-hrefhttpswavesplatformgithubiojs-test-envglobalshtmlherea-you-can-find-list-of-all-globally-available-functions-for-ride-test-environment-and-repl" style="color: inherit; text-decoration: none;">
 					<h3><a href="https://wavesplatform.github.io/js-test-env/globals.html">Here</a> you can find list of all globally available functions for ride test environment and REPL</h3>
 				</a>
@@ -82,12 +131,6 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-enum">
-						<a href="enums/data_field_type.html" class="tsd-kind-icon">DATA_<wbr>FIELD_<wbr>TYPE</a>
-					</li>
-					<li class=" tsd-kind-enum">
-						<a href="enums/transaction_type.html" class="tsd-kind-icon">TRANSACTION_<wbr>TYPE</a>
-					</li>
 					<li class=" tsd-kind-interface tsd-has-type-parameter">
 						<a href="interfaces/ialiasparams.html" class="tsd-kind-icon">IAlias<wbr>Params</a>
 					</li>
@@ -227,6 +270,12 @@
 						<a href="interfaces/itypelessdataentry.html" class="tsd-kind-icon">ITypeless<wbr>Data<wbr>Entry</a>
 					</li>
 					<li class=" tsd-kind-interface">
+						<a href="interfaces/iwavesauth.html" class="tsd-kind-icon">IWaves<wbr>Auth</a>
+					</li>
+					<li class=" tsd-kind-interface">
+						<a href="interfaces/iwavesauthparams.html" class="tsd-kind-icon">IWaves<wbr>Auth<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-interface">
 						<a href="interfaces/withchainid.html" class="tsd-kind-icon">With<wbr>Chain<wbr>Id</a>
 					</li>
 					<li class=" tsd-kind-interface">
@@ -245,13 +294,25 @@
 						<a href="interfaces/withtxtype.html" class="tsd-kind-icon">With<wbr>TxType</a>
 					</li>
 					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#tdatafiledtype" class="tsd-kind-icon">TData<wbr>Filed<wbr>Type</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
 						<a href="globals.html#torder" class="tsd-kind-icon">TOrder</a>
+					</li>
+					<li class=" tsd-kind-type-alias">
+						<a href="globals.html#ttransactiontype" class="tsd-kind-icon">TTransaction<wbr>Type</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#ttx" class="tsd-kind-icon">TTx</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-has-type-parameter">
 						<a href="globals.html#ttxparams" class="tsd-kind-icon">TTx<wbr>Params</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#data_field_type" class="tsd-kind-icon">DATA_<wbr>FIELD_<wbr>TYPE</a>
+					</li>
+					<li class=" tsd-kind-variable">
+						<a href="globals.html#transaction_type" class="tsd-kind-icon">TRANSACTION_<wbr>TYPE</a>
 					</li>
 					<li class=" tsd-kind-variable">
 						<a href="globals.html#accounts" class="tsd-kind-icon">accounts</a>
