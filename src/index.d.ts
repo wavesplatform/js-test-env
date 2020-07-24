@@ -42,7 +42,7 @@ import {
 ///splice-start
 declare global {
 
-    export const env: {
+    export var env: {
         API_BASE: string,
         SEED: string,
         CHAIN_ID: string,
@@ -56,7 +56,7 @@ declare global {
      * console.log(accounts.foo, accounts.bar) // these variables now contain seeds from accounts with 10 and 20 wavelets
      * ```
      */
-    export const accounts: Record<string, string>;
+    export var accounts: Record<string, string>;
 
 
 /// TRANSACTION CREATORS

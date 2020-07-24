@@ -42,6 +42,7 @@ export default function augment(global: any, options?: IAugmentOptions) {
             );
     }
 
+    global.accounts = {}
     global.wavesCrypto = wt.libs.crypto;
     global.chai = chai;
     global.expect = chai.expect;
