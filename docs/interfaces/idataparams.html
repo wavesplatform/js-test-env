@@ -104,6 +104,7 @@
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="idataparams.html#fee" class="tsd-kind-icon">fee</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="idataparams.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="idataparams.html#timestamp" class="tsd-kind-icon">timestamp</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="idataparams.html#version" class="tsd-kind-icon">version</a></li>
 							</ul>
 						</section>
 					</div>
@@ -118,7 +119,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ibasicparams.html">IBasicParams</a>.<a href="ibasicparams.html#additionalfee">additionalFee</a></p>
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:305</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:309</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -134,7 +135,7 @@
 					<div class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><a href="idataentry.html" class="tsd-signature-type">IDataEntry</a><span class="tsd-signature-symbol"> | </span><a href="itypelessdataentry.html" class="tsd-signature-type">ITypelessDataEntry</a><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:349</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:353</li>
 						</ul>
 					</aside>
 				</section>
@@ -145,7 +146,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ibasicparams.html">IBasicParams</a>.<a href="ibasicparams.html#fee">fee</a></p>
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:300</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:304</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -161,7 +162,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ibasicparams.html">IBasicParams</a>.<a href="ibasicparams.html#senderpublickey">senderPublicKey</a></p>
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:311</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:315</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -181,12 +182,28 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="ibasicparams.html">IBasicParams</a>.<a href="ibasicparams.html#timestamp">timestamp</a></p>
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:315</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:319</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Transaction timestamp. If not set current timestamp will be used. Date.now()</p>
+						</div>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="version" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> version</h3>
+					<div class="tsd-signature tsd-kind-icon">version<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="ibasicparams.html">IBasicParams</a>.<a href="ibasicparams.html#version">version</a></p>
+						<ul>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:300</li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<div class="lead">
+							<p>Transaction version. If not set, the latest available version will be used.</p>
 						</div>
 					</div>
 				</section>
@@ -221,6 +238,9 @@
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="idataparams.html#timestamp" class="tsd-kind-icon">timestamp</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="idataparams.html#version" class="tsd-kind-icon">version</a>
 							</li>
 						</ul>
 					</li>
