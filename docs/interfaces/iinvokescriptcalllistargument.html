@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IInvokeScriptCall | js-test-env</title>
+	<title>IInvokeScriptCallListArgument | js-test-env</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -52,10 +52,10 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="iinvokescriptcall.html">IInvokeScriptCall</a>
+					<a href="iinvokescriptcalllistargument.html">IInvokeScriptCallListArgument</a>
 				</li>
 			</ul>
-			<h1>Interface IInvokeScriptCall&lt;LONG&gt;</h1>
+			<h1>Interface IInvokeScriptCallListArgument&lt;LONG&gt;</h1>
 		</div>
 	</div>
 </header>
@@ -74,7 +74,7 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IInvokeScriptCall</span>
+						<span class="target">IInvokeScriptCallListArgument</span>
 					</li>
 				</ul>
 			</section>
@@ -85,8 +85,8 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinvokescriptcall.html#args" class="tsd-kind-icon">args</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinvokescriptcall.html#function" class="tsd-kind-icon">function</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinvokescriptcalllistargument.html#type" class="tsd-kind-icon">type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="iinvokescriptcalllistargument.html#value" class="tsd-kind-icon">value</a></li>
 							</ul>
 						</section>
 					</div>
@@ -95,36 +95,24 @@
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="args" class="tsd-anchor"></a>
-					<h3>args</h3>
-					<div class="tsd-signature tsd-kind-icon">args<span class="tsd-signature-symbol">:</span> <a href="../globals.html#tinvokescriptcallargument" class="tsd-signature-type">TInvokeScriptCallArgument</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">LONG</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
+					<a name="type" class="tsd-anchor"></a>
+					<h3>type</h3>
+					<div class="tsd-signature tsd-kind-icon">type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">"list"</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:263</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:556</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Array of function arguments. E.g.:
-								{type: &#39;integer&#39;, value: 200} or
-							{ type: &#39;binary&#39;, value: &#39;base64:AQa3b8tH&#39;}</p>
-						</div>
-					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="function" class="tsd-anchor"></a>
-					<h3>function</h3>
-					<div class="tsd-signature tsd-kind-icon">function<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<a name="value" class="tsd-anchor"></a>
+					<h3>value</h3>
+					<div class="tsd-signature tsd-kind-icon">value<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><a href="../globals.html#tinvokescriptcallargument" class="tsd-signature-type">TInvokeScriptCallArgument</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">LONG</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">, </span><a href="iinvokescriptcalllistargument.html" class="tsd-signature-type">IInvokeScriptCallListArgument</a><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">LONG</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">[]</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:257</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:557</li>
 						</ul>
 					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Function name</p>
-						</div>
-					</div>
 				</section>
 			</section>
 		</div>
@@ -141,13 +129,13 @@
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-has-type-parameter">
-						<a href="iinvokescriptcall.html" class="tsd-kind-icon">IInvoke<wbr>Script<wbr>Call</a>
+						<a href="iinvokescriptcalllistargument.html" class="tsd-kind-icon">IInvoke<wbr>Script<wbr>Call<wbr>List<wbr>Argument</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iinvokescriptcall.html#args" class="tsd-kind-icon">args</a>
+								<a href="iinvokescriptcalllistargument.html#type" class="tsd-kind-icon">type</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="iinvokescriptcall.html#function" class="tsd-kind-icon">function</a>
+								<a href="iinvokescriptcalllistargument.html#value" class="tsd-kind-icon">value</a>
 							</li>
 						</ul>
 					</li>
