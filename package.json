@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/wavesplatform/js-test-env#readme",
   "dependencies": {
-    "@waves/ride-js": "^2.0.0-beta.5",
-    "@waves/waves-transactions": "4.0.0-beta.26",
+    "@waves/ride-js": "^2.0.0",
+    "@waves/waves-transactions": "4.0.1",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "tslib": "^1.10.0"
