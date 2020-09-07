@@ -100,7 +100,9 @@
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ileasetransaction.html#amount" class="tsd-kind-icon">amount</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ileasetransaction.html#chainid" class="tsd-kind-icon">chain<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ileasetransaction.html#fee" class="tsd-kind-icon">fee</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ileasetransaction.html#feeassetid" class="tsd-kind-icon">fee<wbr>Asset<wbr>Id</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ileasetransaction.html#proofs" class="tsd-kind-icon">proofs</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="ileasetransaction.html#recipient" class="tsd-kind-icon">recipient</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="ileasetransaction.html#senderpublickey" class="tsd-kind-icon">sender<wbr>Public<wbr>Key</a></li>
@@ -120,7 +122,18 @@
 					<div class="tsd-signature tsd-kind-icon">amount<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">LONG</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:166</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:198</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="chainid" class="tsd-anchor"></a>
+					<h3>chain<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">chain<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="itransaction.html">ITransaction</a>.<a href="itransaction.html#chainid">chainId</a></p>
+						<ul>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:98</li>
 						</ul>
 					</aside>
 				</section>
@@ -131,7 +144,18 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="itransaction.html">ITransaction</a>.<a href="itransaction.html#fee">fee</a></p>
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:66</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:96</li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+					<a name="feeassetid" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> fee<wbr>Asset<wbr>Id</h3>
+					<div class="tsd-signature tsd-kind-icon">fee<wbr>Asset<wbr>Id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">null</span></div>
+					<aside class="tsd-sources">
+						<p>Inherited from <a href="itransaction.html">ITransaction</a>.<a href="itransaction.html#feeassetid">feeAssetId</a></p>
+						<ul>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:99</li>
 						</ul>
 					</aside>
 				</section>
@@ -142,7 +166,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="withproofs.html">WithProofs</a>.<a href="withproofs.html#proofs">proofs</a></p>
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:40</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:70</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -165,7 +189,7 @@
 					<div class="tsd-signature tsd-kind-icon">recipient<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:167</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:199</li>
 						</ul>
 					</aside>
 				</section>
@@ -176,7 +200,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="withsender.html">WithSender</a>.<a href="withsender.html#senderpublickey">senderPublicKey</a></p>
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:32</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:62</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -192,7 +216,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="itransaction.html">ITransaction</a>.<a href="itransaction.html#timestamp">timestamp</a></p>
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:65</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:95</li>
 						</ul>
 					</aside>
 				</section>
@@ -203,7 +227,7 @@
 					<aside class="tsd-sources">
 						<p>Overrides <a href="itransaction.html">ITransaction</a>.<a href="itransaction.html#type">type</a></p>
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:165</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:197</li>
 						</ul>
 					</aside>
 				</section>
@@ -214,7 +238,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="itransaction.html">ITransaction</a>.<a href="itransaction.html#version">version</a></p>
 						<ul>
-							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:67</li>
+							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:97</li>
 						</ul>
 					</aside>
 				</section>
@@ -239,7 +263,13 @@
 								<a href="ileasetransaction.html#amount" class="tsd-kind-icon">amount</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="ileasetransaction.html#chainid" class="tsd-kind-icon">chain<wbr>Id</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ileasetransaction.html#fee" class="tsd-kind-icon">fee</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
+								<a href="ileasetransaction.html#feeassetid" class="tsd-kind-icon">fee<wbr>Asset<wbr>Id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="ileasetransaction.html#proofs" class="tsd-kind-icon">proofs</a>

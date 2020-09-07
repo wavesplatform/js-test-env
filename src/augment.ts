@@ -16,7 +16,7 @@ export interface IAugmentOptions  {
     setupAccountsWrapper?: (f : TSetupAccountsFunc) => TSetupAccountsFunc
 }
 export default function augment(global: any, options?: IAugmentOptions) {
-    function withDefaults(options: INodeRequestOptions = {}) {
+    function withDefaults(options: INodeRequestOptions = {apiBase: global.env.API_BASE}) {
         return {
             timeout: options.timeout || global.env.timeout || 20000,
             apiBase: options.apiBase || global.env.API_BASE
@@ -63,6 +63,7 @@ export default function augment(global: any, options?: IAugmentOptions) {
     global.invokeScript = injectEnv(wt.invokeScript);
     global.sponsorship = injectEnv(wt.sponsorship);
     global.signTx = injectEnv(wt.signTx);
+    global.updateAssetInfo = injectEnv(wt.updateAssetInfo);
 
     global.waitForTx = async (txId: string, options?: INodeRequestOptions) =>
         wt.nodeInteraction.waitForTx(txId, withDefaults(options));
@@ -105,7 +106,7 @@ export default function augment(global: any, options?: IAugmentOptions) {
     global.privateKey = (seed?: string) => wt.libs.crypto.keyPair(seed || envSeed()).privateKey;
     global.address = (seed?: string, chainId?: string) => wt.libs.crypto.address(seed || envSeed(), chainId || global.env.CHAIN_ID);
     global.compile = (code: string) => {
-        const resultOrError = cmpl(code);
+        const resultOrError = cmpl(code, 3);
         if ('error' in resultOrError) throw new Error(resultOrError.error);
 
         return resultOrError.result.base64;

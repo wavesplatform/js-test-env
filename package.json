@@ -1,6 +1,6 @@
 {
   "name": "@waves/js-test-env",
-  "version": "0.8.0",
+  "version": "1.0.0-beta.14",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -24,8 +24,8 @@
   },
   "homepage": "https://github.com/wavesplatform/js-test-env#readme",
   "dependencies": {
-    "@waves/ride-js": "^1.1.16",
-    "@waves/waves-transactions": "^3.26.0",
+    "@waves/ride-js": "^2.0.0-beta.5",
+    "@waves/waves-transactions": "4.0.0-beta.26",
     "chai": "^4.2.0",
     "chai-as-promised": "^7.1.1",
     "tslib": "^1.10.0"
