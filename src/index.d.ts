@@ -160,36 +160,36 @@ declare global {
      * await waitForTx(tx.id)
      * ```
      */
-    export function waitForTx(txId: string, options?: INodeRequestOptions): Promise<TTx & {applicationStatus?: 'succeed' | 'scriptExecutionFailed'}>
+    export function waitForTx(txId: string, options?: INodeRequestOptions, requestOptions?: RequestInit): Promise<TTx & {applicationStatus?: 'succeed' | 'scriptExecutionFailed'}>
 
     /**
      * Resolves N blocks after specified txId is mined into the block
      * By default has 20s timeout and uses current environment node
      */
-    export function waitForTxWithNConfirmations(txId: string, confirmations: number, options?: INodeRequestOptions): Promise<TTx & {applicationStatus?: 'succeed' | 'scriptExecutionFailed'}>
+    export function waitForTxWithNConfirmations(txId: string, confirmations: number, options?: INodeRequestOptions, requestOptions?: RequestInit): Promise<TTx & {applicationStatus?: 'succeed' | 'scriptExecutionFailed'}>
 
     /**
      * Resolves N blocks after current blockchain height
      * By default has 20s timeout and uses current environment node
      */
-    export function waitNBlocks(blocksCount: number, options?: INodeRequestOptions): Promise<void>
+    export function waitNBlocks(blocksCount: number, options?: INodeRequestOptions, requestOptions?: RequestInit): Promise<void>
 
     /**
      * Current blockchain height
      * By default has 20s timeout and uses current environment node
      */
-    export function currentHeight(apiBase?: string): Promise<number>
+    export function currentHeight(apiBase?: string, requestOptions?: RequestInit): Promise<number>
 
     /**
      * Resolves after target height has been reached
      * By default has 20s timeout and uses current environment node
      */
-    export function waitForHeight(target: number, options?: INodeRequestOptions): Promise<void>
+    export function waitForHeight(target: number, options?: INodeRequestOptions, requestOptions?: RequestInit): Promise<void>
 
     /**
      * Get transaction by Id. Returns null if no transaction with such id present in blockchain
      */
-    export function transactionById(txId: string, apiBase?: string): Promise<ITransaction & WithId & {
+    export function transactionById(txId: string, apiBase?: string, requestOptions?: RequestInit): Promise<ITransaction & WithId & {
         height: number;
     }>;
 
@@ -197,43 +197,43 @@ declare global {
      * Get account effective balance
      * By default uses current environment address and node
      */
-    export function balance(address?: string, apiBase?: string): Promise<number>
+    export function balance(address?: string, apiBase?: string, requestOptions?: RequestInit): Promise<number>
 
     /**
      * Retrieve information about specific asset account balance
      * By default uses current environment address and node
      */
-    export function assetBalance(assetId: string, address?: string, apiBase?: string): Promise<any>
+    export function assetBalance(assetId: string, address?: string, apiBase?: string, requestOptions?: RequestInit): Promise<any>
 
     /**
      * Retrieve full information about waves account balance. Effective, generating etc
      * By default uses current environment address and node
      */
-    export function balanceDetails(address?: string, apiBase?: string): Promise<any>
+    export function balanceDetails(address?: string, apiBase?: string, requestOptions?: RequestInit): Promise<any>
 
     /**
      * Get full account dictionary
      * By default uses current environment address and node
      */
-    export function accountData(address?: string, apiBase?: string): Promise<Record<string, TDataEntry>>
+    export function accountData(address?: string, apiBase?: string, requestOptions?: RequestInit): Promise<Record<string, TDataEntry>>
 
     /**
      * Get data from account dictionary by key
      * By default uses current environment address and node
      */
-    export function accountDataByKey(key: string, address?: string, apiBase?: string): Promise<TDataEntry>
+    export function accountDataByKey(key: string, address?: string, apiBase?: string, requestOptions?: RequestInit): Promise<TDataEntry>
 
     /**
      * Get invokeScript tx state changes
      * By default uses current environment address and node
      */
-    export function stateChanges(invokeScriptTxId: string, apiBase?: string): Promise<any>
+    export function stateChanges(invokeScriptTxId: string, apiBase?: string, requestOptions?: RequestInit): Promise<any>
 
     /**
      * Sends transaction to waves node
      * By default uses current environment address and node
      */
-    export function broadcast(tx: TTx, apiBase?: string): Promise<any>
+    export function broadcast(tx: TTx, apiBase?: string, requestOptions?: RequestInit): Promise<any>
 
 
 // UTILITY
@@ -324,7 +324,7 @@ declare global {
     /**
      * Creates invoke tx and broadcasts it
      * */
-    export function invoke(options: IInvokeOptions, seed?: string, apiBase?: string): Promise<any>;
+    export function invoke(options: IInvokeOptions, seed?: string, apiBase?: string, requestOptions?: RequestInit): Promise<any>;
 
     /**
      * Generates test accounts with balances. Sends waves to generated accounts from master seed. Saves account seeds `accounts`
@@ -347,7 +347,7 @@ declare global {
      * })
      * ```
      */
-    export function setupAccounts(balances: Record<string, number>, options?: ISetupAccountsOptions): Promise<Record<string, string>>
+    export function setupAccounts(balances: Record<string, number>, options?: ISetupAccountsOptions, requestOptions?: RequestInit): Promise<Record<string, string>>
 
     /**
      * Shorthand for `chai.expect` [[chai]]

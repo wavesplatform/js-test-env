@@ -65,33 +65,33 @@ export default function augment(global: any, options?: IAugmentOptions) {
     global.signTx = injectEnv(wt.signTx);
     global.updateAssetInfo = injectEnv(wt.updateAssetInfo);
 
-    global.waitForTx = async (txId: string, options?: INodeRequestOptions) =>
-        wt.nodeInteraction.waitForTx(txId, withDefaults(options));
-    global.waitForTxWithNConfirmations = async (txId: string, confirmations: number, options?: INodeRequestOptions) =>
-        wt.nodeInteraction.waitForTxWithNConfirmations(txId, confirmations, withDefaults(options));
-    global.waitNBlocks = (blocksCount: number, options?: INodeRequestOptions) =>
-        wt.nodeInteraction.waitNBlocks(blocksCount, withDefaults(options));
-    global.currentHeight = (apiBase?: string) =>
-        wt.nodeInteraction.currentHeight(apiBase || global.env.API_BASE);
-    global.transactionById = (txId: string, apiBase?: string) =>
-        wt.nodeInteraction.transactionById(txId, apiBase || global.env.API_BASE);
-    global.waitForHeight = (target: number, options?: INodeRequestOptions) =>
-        wt.nodeInteraction.waitForHeight(target, withDefaults(options));
-    global.balance = (address?: string, apiBase?: string) =>
-        wt.nodeInteraction.balance(address || currentAddress(), apiBase || global.env.API_BASE);
-    global.assetBalance = (assetId: string, address?: string, apiBase?: string) =>
-        wt.nodeInteraction.assetBalance(assetId, address || currentAddress(), apiBase || global.env.API_BASE);
-    global.balanceDetails = (address?: string, apiBase?: string) =>
-        wt.nodeInteraction.balanceDetails(address || currentAddress(), apiBase || global.env.API_BASE);
-    global.accountData = (address?: string, apiBase?: string) =>
-        wt.nodeInteraction.accountData(address || currentAddress(), apiBase || global.env.API_BASE);
-    global.accountDataByKey = (key: string, address?: string, apiBase?: string) =>
-        wt.nodeInteraction.accountDataByKey(key, address || currentAddress(), apiBase || global.env.API_BASE);
-    global.stateChanges = (invokeScriptTxId: string, apiBase?: string) =>
-        wt.nodeInteraction.stateChanges(invokeScriptTxId, apiBase || global.env.API_BASE);
-    global.broadcast = (tx: wt.TTx, apiBase?: string) => options && options.broadcastWrapper
-        ? options.broadcastWrapper(wt.nodeInteraction.broadcast)(tx, apiBase || global.env.API_BASE)
-        : wt.nodeInteraction.broadcast(tx, apiBase || global.env.API_BASE);
+    global.waitForTx = async (txId: string, options?: INodeRequestOptions, requestOptions?: RequestInit) =>
+        wt.nodeInteraction.waitForTx(txId, withDefaults(options), requestOptions || global.env.requestOptions);
+    global.waitForTxWithNConfirmations = async (txId: string, confirmations: number, options?: INodeRequestOptions, requestOptions?: RequestInit) =>
+        wt.nodeInteraction.waitForTxWithNConfirmations(txId, confirmations, withDefaults(options), requestOptions || global.env.requestOptions);
+    global.waitNBlocks = (blocksCount: number, options?: INodeRequestOptions, requestOptions?: RequestInit) =>
+        wt.nodeInteraction.waitNBlocks(blocksCount, withDefaults(options), requestOptions || global.env.requestOptions);
+    global.currentHeight = (apiBase?: string, requestOptions?: RequestInit) =>
+        wt.nodeInteraction.currentHeight(apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+    global.transactionById = (txId: string, apiBase?: string, requestOptions?: RequestInit) =>
+        wt.nodeInteraction.transactionById(txId, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+    global.waitForHeight = (target: number, options?: INodeRequestOptions, requestOptions?: RequestInit) =>
+        wt.nodeInteraction.waitForHeight(target, withDefaults(options), requestOptions || global.env.requestOptions);
+    global.balance = (address?: string, apiBase?: string, requestOptions?: RequestInit) =>
+        wt.nodeInteraction.balance(address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+    global.assetBalance = (assetId: string, address?: string, apiBase?: string, requestOptions?: RequestInit) =>
+        wt.nodeInteraction.assetBalance(assetId, address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+    global.balanceDetails = (address?: string, apiBase?: string, requestOptions?: RequestInit) =>
+        wt.nodeInteraction.balanceDetails(address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+    global.accountData = (address?: string, apiBase?: string, requestOptions?: RequestInit) =>
+        wt.nodeInteraction.accountData(address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+    global.accountDataByKey = (key: string, address?: string, apiBase?: string, requestOptions?: RequestInit) =>
+        wt.nodeInteraction.accountDataByKey(key, address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+    global.stateChanges = (invokeScriptTxId: string, apiBase?: string, requestOptions?: RequestInit) =>
+        wt.nodeInteraction.stateChanges(invokeScriptTxId, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+    global.broadcast = (tx: wt.TTx, apiBase?: string, requestOptions?: RequestInit) => options && options.broadcastWrapper
+        ? options.broadcastWrapper(wt.nodeInteraction.broadcast)(tx, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions)
+        : wt.nodeInteraction.broadcast(tx, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
 
     global.file = (name?: string) => {
         if (typeof global.env.file !== 'function') {
@@ -112,7 +112,7 @@ export default function augment(global: any, options?: IAugmentOptions) {
         return resultOrError.result.base64;
     };
 
-    global.invoke = ({dApp, functionName, arguments: argsOpt, payment: paymentOpt}: IInvokeOptions, seed?: string, apiBase?: string) => {
+    global.invoke = ({dApp, functionName, arguments: argsOpt, payment: paymentOpt}: IInvokeOptions, seed?: string, apiBase?: string, requestOptions?: RequestInit) => {
         let payment: IPayment[] = [];
         if (typeof paymentOpt === 'number') payment = [{assetId: null, amount: paymentOpt}];
         if (typeof paymentOpt === 'object' && !Array.isArray(paymentOpt)) payment = [paymentOpt];
@@ -143,13 +143,13 @@ export default function augment(global: any, options?: IAugmentOptions) {
         }).filter((v): v is IInvokeArgument => v != null);
         const params = {dApp, feeAssetId: null, call: {function: functionName, args}, payment};
         const tx = global.invokeScript(params, seed || envSeed());
-        return global.broadcast(tx, apiBase || global.env.API_BASE);
+        return global.broadcast(tx, apiBase || global.env.API_BASE, requestOptions);
     };
 
     global.signBytes = (bytes: Uint8Array, seed?: string) =>
         wt.libs.crypto.signBytes(bytes, seed || envSeed());
 
-    const setupAccountsFunc = async (balances: Record<string, number>, options?: any): Promise<Record<string, string>> => {
+    const setupAccountsFunc = async (balances: Record<string, number>, options?: any, requestOptions?: RequestInit): Promise<Record<string, string>> => {
         if (!global.accounts) global.accounts = {};
 
         const getNonce = () => [].map.call(
@@ -179,8 +179,8 @@ export default function augment(global: any, options?: IAugmentOptions) {
         const totalAmount = transfers.reduce((acc, {amount}) => acc + +amount, 0);
         if (totalAmount > 0) {
             const mtt = global.massTransfer({transfers}, masterSeed);
-            await global.broadcast(mtt);
-            await global.waitForTx(mtt.id);
+            await global.broadcast(mtt, undefined, requestOptions);
+            await global.waitForTx(mtt.id, undefined, requestOptions);
             global.console.log(`Accounts successfully funded`);
         }
 
