@@ -1,8 +1,9 @@
 import * as wt from '@waves/waves-transactions';
-import { IMassTransferItem, INodeRequestOptions } from '@waves/waves-transactions';
+import { INodeRequestOptions } from '@waves/waves-transactions';
 import { compile as cmpl } from '@waves/ride-js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
+import { MassTransferItem } from '@waves/ts-types';
 
 chai.use(chaiAsPromised);
 
@@ -72,11 +73,11 @@ export default function augment(global: any, options?: IAugmentOptions) {
     global.waitNBlocks = (blocksCount: number, options?: INodeRequestOptions, requestOptions?: RequestInit) =>
         wt.nodeInteraction.waitNBlocks(blocksCount, withDefaults(options), requestOptions || global.env.requestOptions);
     global.currentHeight = (apiBase?: string, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.currentHeight(apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+        wt.nodeInteraction.currentHeight(apiBase || global.env.API_BASE);
     global.transactionById = (txId: string, apiBase?: string, requestOptions?: RequestInit) =>
         wt.nodeInteraction.transactionById(txId, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
     global.waitForHeight = (target: number, options?: INodeRequestOptions, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.waitForHeight(target, withDefaults(options), requestOptions || global.env.requestOptions);
+        wt.nodeInteraction.waitForHeight(target, withDefaults(options));
     global.balance = (address?: string, apiBase?: string, requestOptions?: RequestInit) =>
         wt.nodeInteraction.balance(address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
     global.assetBalance = (assetId: string, address?: string, apiBase?: string, requestOptions?: RequestInit) =>
@@ -162,7 +163,7 @@ export default function augment(global: any, options?: IAugmentOptions) {
 
         global.console.log(`Generating accounts with nonce: ${nonce}`);
 
-        const transfers: IMassTransferItem[] = [];
+        const transfers: MassTransferItem[] = [];
 
         Object.entries(balances).forEach(([name, balance]) => {
             const seed = name + '#' + nonce;
@@ -217,3 +218,4 @@ export interface IInvokeOptions {
     arguments?: (number | string | boolean | Uint8Array | number[] | IInvokeArgument)[]
     payment?: IPayment | IPayment[] | number
 }
+
