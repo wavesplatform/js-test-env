@@ -134,11 +134,11 @@ export default function augment(global: any, options?: IAugmentOptions) {
             if (isIInvokeArgument(arg)) return arg;
             //Uint8Array
             if (typeof arg === 'object' && !Array.isArray(arg)) {
-                return {type: 'binary', value: btoa(decoder.decode(arg as Uint8Array))};
+                return {type: 'binary', value: Buffer.from(arg).toString('base64')};
             }
             //number[]
             if (typeof arg === 'object' && Array.isArray(arg) && arg.length > 0 && typeof arg[0] === 'number') {
-                return {type: 'binary', value: btoa(decoder.decode(Uint8Array.from(arg)))};
+                return {type: 'binary', value: Buffer.from(arg).toString('base64')};
             }
             return null;
         }).filter((v): v is IInvokeArgument => v != null);
