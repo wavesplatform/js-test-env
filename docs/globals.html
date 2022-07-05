@@ -139,10 +139,14 @@
 								<li class="tsd-kind-function"><a href="globals.html#currentheight" class="tsd-kind-icon">current<wbr>Height</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#data" class="tsd-kind-icon">data</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#expect" class="tsd-kind-icon">expect</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#fetchassetdetails" class="tsd-kind-icon">fetch<wbr>Asset<wbr>Details</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#fetchassetsdetails" class="tsd-kind-icon">fetch<wbr>Assets<wbr>Details</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#file" class="tsd-kind-icon">file</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#generatenewseed" class="tsd-kind-icon">generate<wbr>New<wbr>Seed</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#invoke" class="tsd-kind-icon">invoke</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#invokescript" class="tsd-kind-icon">invoke<wbr>Script</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#issue" class="tsd-kind-icon">issue</a></li>
+								<li class="tsd-kind-function"><a href="globals.html#keccak" class="tsd-kind-icon">keccak</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#keypair" class="tsd-kind-icon">key<wbr>Pair</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#lease" class="tsd-kind-icon">lease</a></li>
 								<li class="tsd-kind-function"><a href="globals.html#masstransfer" class="tsd-kind-icon">mass<wbr>Transfer</a></li>
@@ -174,7 +178,7 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="ttransaction" class="tsd-anchor"></a>
 					<h3>TTransaction</h3>
-					<div class="tsd-signature tsd-kind-icon">TTransaction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Transaction</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">GenesisTransaction</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PaymentTransaction</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">TTransaction<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Transaction</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">GenesisTransaction</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">PaymentTransaction</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">EthereumTransaction</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:271</li>
@@ -184,7 +188,7 @@
 				<section class="tsd-panel tsd-member tsd-kind-type-alias">
 					<a name="ttransactiontype" class="tsd-anchor"></a>
 					<h3>TTransaction<wbr>Type</h3>
-					<div class="tsd-signature tsd-kind-icon">TTransaction<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">2</span><span class="tsd-signature-symbol">&gt;</span></div>
+					<div class="tsd-signature tsd-kind-icon">TTransaction<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Exclude</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">1</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">2</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">18</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
 							<li>Defined in node_modules/@waves/waves-transactions/dist/transactions.d.ts:272</li>
@@ -241,7 +245,7 @@
 					<div class="tsd-signature tsd-kind-icon">accounts<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in build/global.d.ts:51</li>
+							<li>Defined in build/global.d.ts:56</li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -260,13 +264,13 @@
 					<a name="accountdata" class="tsd-anchor"></a>
 					<h3>account<wbr>Data</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">account<wbr>Data<span class="tsd-signature-symbol">(</span>address<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, apiBase<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, requestOptions<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">RequestInit</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDataEntry</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">account<wbr>Data<span class="tsd-signature-symbol">(</span>address<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, apiBase<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, requestOptions<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">RequestInit</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">DataTransactionEntry</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:210</li>
+									<li>Defined in build/global.d.ts:213</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -287,7 +291,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> requestOptions: <span class="tsd-signature-type">RequestInit</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">TDataEntry</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">DataTransactionEntry</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -295,13 +299,13 @@
 					<a name="accountdatabykey" class="tsd-anchor"></a>
 					<h3>account<wbr>Data<wbr>ByKey</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">account<wbr>Data<wbr>ByKey<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, address<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, apiBase<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, requestOptions<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">RequestInit</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TDataEntry</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">account<wbr>Data<wbr>ByKey<span class="tsd-signature-symbol">(</span>key<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, address<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, apiBase<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, requestOptions<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">RequestInit</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">DataTransactionEntry</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:216</li>
+									<li>Defined in build/global.d.ts:219</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -325,7 +329,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> requestOptions: <span class="tsd-signature-type">RequestInit</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TDataEntry</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">DataTransactionEntry</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -339,7 +343,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:264</li>
+									<li>Defined in build/global.d.ts:273</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -365,13 +369,13 @@
 					<a name="alias" class="tsd-anchor"></a>
 					<h3>alias</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">alias<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/ialiasparams.html" class="tsd-signature-type">IAliasParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IAliasTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">alias<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/ialiasparams.html" class="tsd-signature-type">IAliasParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">AliasTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:59</li>
+									<li>Defined in build/global.d.ts:64</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -389,7 +393,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IAliasTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">AliasTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -406,7 +410,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:198</li>
+									<li>Defined in build/global.d.ts:201</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -444,7 +448,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:192</li>
+									<li>Defined in build/global.d.ts:195</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -479,7 +483,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:204</li>
+									<li>Defined in build/global.d.ts:207</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -514,7 +518,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:228</li>
+									<li>Defined in build/global.d.ts:231</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -543,13 +547,13 @@
 					<a name="burn" class="tsd-anchor"></a>
 					<h3>burn</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">burn<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/iburnparams.html" class="tsd-signature-type">IBurnParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IBurnTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">burn<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/iburnparams.html" class="tsd-signature-type">IBurnParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">BurnTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:64</li>
+									<li>Defined in build/global.d.ts:69</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -566,7 +570,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IBurnTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">BurnTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -577,13 +581,13 @@
 					<a name="cancellease" class="tsd-anchor"></a>
 					<h3>cancel<wbr>Lease</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Lease<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/icancelleaseparams.html" class="tsd-signature-type">ICancelLeaseParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ICancelLeaseTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">cancel<wbr>Lease<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/icancelleaseparams.html" class="tsd-signature-type">ICancelLeaseParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">CancelLeaseTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:69</li>
+									<li>Defined in build/global.d.ts:74</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -600,7 +604,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ICancelLeaseTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">CancelLeaseTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -617,7 +621,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:74</li>
+									<li>Defined in build/global.d.ts:79</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -642,13 +646,13 @@
 					<a name="compile" class="tsd-anchor"></a>
 					<h3>compile</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">compile<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+						<li class="tsd-signature tsd-kind-icon">compile<span class="tsd-signature-symbol">(</span>code<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, estimatorVersion<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span>, needCompaction<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span>, removeUnusedCode<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span>, libraries<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:269</li>
+									<li>Defined in build/global.d.ts:278</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -660,6 +664,18 @@
 							<ul class="tsd-parameters">
 								<li>
 									<h5>code: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> estimatorVersion: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> needCompaction: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> removeUnusedCode: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> libraries: <span class="tsd-signature-type">Record</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h5>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
@@ -676,7 +692,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:240</li>
+									<li>Defined in build/global.d.ts:243</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -698,7 +714,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:173</li>
+									<li>Defined in build/global.d.ts:178</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -724,13 +740,13 @@
 					<a name="data" class="tsd-anchor"></a>
 					<h3>data</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/idataparams.html" class="tsd-signature-type">IDataParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IDataTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">data<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/idataparams.html" class="tsd-signature-type">IDataParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DataTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:79</li>
+									<li>Defined in build/global.d.ts:84</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -747,7 +763,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IDataTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">DataTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -764,7 +780,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:347</li>
+									<li>Defined in build/global.d.ts:370</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -786,6 +802,68 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="fetchassetdetails" class="tsd-anchor"></a>
+					<h3>fetch<wbr>Asset<wbr>Details</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">fetch<wbr>Asset<wbr>Details<span class="tsd-signature-symbol">(</span>id<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, apiBase<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAssetDetails</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in build/global.d.ts:289</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>GET /assets/details/{assetId} Information about an asset</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>id: <span class="tsd-signature-type">string</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> apiBase: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAssetDetails</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="fetchassetsdetails" class="tsd-anchor"></a>
+					<h3>fetch<wbr>Assets<wbr>Details</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">fetch<wbr>Assets<wbr>Details<span class="tsd-signature-symbol">(</span>ids<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span>, apiBase<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAssetDetails</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in build/global.d.ts:294</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>GET /assets/details/{assetId} Information about an asset array</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>ids: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> apiBase: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Array</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TAssetDetails</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="file" class="tsd-anchor"></a>
 					<h3>file</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -795,7 +873,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:235</li>
+									<li>Defined in build/global.d.ts:238</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -814,6 +892,35 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="generatenewseed" class="tsd-anchor"></a>
+					<h3>generate<wbr>New<wbr>Seed</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">generate<wbr>New<wbr>Seed<span class="tsd-signature-symbol">(</span>wordsCount<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in build/global.d.ts:267</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Generates random seed phrase
+									By default is 15 words</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5><span class="tsd-flag ts-flagOptional">Optional</span> wordsCount: <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
 					<a name="invoke" class="tsd-anchor"></a>
 					<h3>invoke</h3>
 					<ul class="tsd-signatures tsd-kind-function">
@@ -823,7 +930,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:319</li>
+									<li>Defined in build/global.d.ts:342</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -854,13 +961,13 @@
 					<a name="invokescript" class="tsd-anchor"></a>
 					<h3>invoke<wbr>Script</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">invoke<wbr>Script<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/iinvokescriptparams.html" class="tsd-signature-type">IInvokeScriptParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IInvokeScriptTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">invoke<wbr>Script<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/iinvokescriptparams.html" class="tsd-signature-type">IInvokeScriptParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">InvokeScriptTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:124</li>
+									<li>Defined in build/global.d.ts:129</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -877,7 +984,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IInvokeScriptTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">InvokeScriptTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -888,13 +995,13 @@
 					<a name="issue" class="tsd-anchor"></a>
 					<h3>issue</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">issue<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/iissueparams.html" class="tsd-signature-type">IIssueParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IIssueTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">issue<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/iissueparams.html" class="tsd-signature-type">IIssueParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IssueTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:84</li>
+									<li>Defined in build/global.d.ts:89</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -911,10 +1018,38 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IIssueTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IssueTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-function">
+					<a name="keccak" class="tsd-anchor"></a>
+					<h3>keccak</h3>
+					<ul class="tsd-signatures tsd-kind-function">
+						<li class="tsd-signature tsd-kind-icon">keccak<span class="tsd-signature-symbol">(</span>input<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Uint8Array</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in build/global.d.ts:299</li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Hash function</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>input: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">Uint8Array</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span><span class="tsd-signature-symbol">[]</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Uint8Array</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -928,7 +1063,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:246</li>
+									<li>Defined in build/global.d.ts:249</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -953,13 +1088,13 @@
 					<a name="lease" class="tsd-anchor"></a>
 					<h3>lease</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">lease<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/ileaseparams.html" class="tsd-signature-type">ILeaseParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ILeaseTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">lease<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/ileaseparams.html" class="tsd-signature-type">ILeaseParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">LeaseTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:94</li>
+									<li>Defined in build/global.d.ts:99</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -976,7 +1111,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ILeaseTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">LeaseTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -987,13 +1122,13 @@
 					<a name="masstransfer" class="tsd-anchor"></a>
 					<h3>mass<wbr>Transfer</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">mass<wbr>Transfer<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/imasstransferparams.html" class="tsd-signature-type">IMassTransferParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IMassTransferTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">mass<wbr>Transfer<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/imasstransferparams.html" class="tsd-signature-type">IMassTransferParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">MassTransferTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:99</li>
+									<li>Defined in build/global.d.ts:104</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1010,7 +1145,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IMassTransferTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">MassTransferTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -1021,13 +1156,13 @@
 					<a name="order" class="tsd-anchor"></a>
 					<h3>order</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">order<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/iorderparams.html" class="tsd-signature-type">IOrderParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TOrder</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">order<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/iorderparams.html" class="tsd-signature-type">IOrderParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ExchangeTransactionOrder</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:104</li>
+									<li>Defined in build/global.d.ts:109</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1044,7 +1179,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TOrder</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ExchangeTransactionOrder</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -1061,7 +1196,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:258</li>
+									<li>Defined in build/global.d.ts:261</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1090,7 +1225,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:252</li>
+									<li>Defined in build/global.d.ts:255</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1113,13 +1248,13 @@
 					<a name="reissue" class="tsd-anchor"></a>
 					<h3>reissue</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">reissue<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/ireissueparams.html" class="tsd-signature-type">IReissueParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IReissueTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">reissue<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/ireissueparams.html" class="tsd-signature-type">IReissueParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ReissueTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:89</li>
+									<li>Defined in build/global.d.ts:94</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1136,7 +1271,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IReissueTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ReissueTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -1147,13 +1282,13 @@
 					<a name="setassetscript" class="tsd-anchor"></a>
 					<h3>set<wbr>Asset<wbr>Script</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Asset<wbr>Script<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/isetassetscriptparams.html" class="tsd-signature-type">ISetAssetScriptParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ISetAssetScriptTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Asset<wbr>Script<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/isetassetscriptparams.html" class="tsd-signature-type">ISetAssetScriptParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SetAssetScriptTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:119</li>
+									<li>Defined in build/global.d.ts:124</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1170,7 +1305,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ISetAssetScriptTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">SetAssetScriptTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -1181,13 +1316,13 @@
 					<a name="setscript" class="tsd-anchor"></a>
 					<h3>set<wbr>Script</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">set<wbr>Script<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/isetscriptparams.html" class="tsd-signature-type">ISetScriptParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ISetScriptTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">set<wbr>Script<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/isetscriptparams.html" class="tsd-signature-type">ISetScriptParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SetScriptTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:114</li>
+									<li>Defined in build/global.d.ts:119</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1204,7 +1339,7 @@
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ISetScriptTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">SetScriptTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -1221,7 +1356,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:342</li>
+									<li>Defined in build/global.d.ts:365</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1272,7 +1407,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:275</li>
+									<li>Defined in build/global.d.ts:284</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1304,7 +1439,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:140</li>
+									<li>Defined in build/global.d.ts:145</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1329,13 +1464,13 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 					<a name="sponsorship" class="tsd-anchor"></a>
 					<h3>sponsorship</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">sponsorship<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/isponsorshipparams.html" class="tsd-signature-type">ISponsorshipParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ISponsorshipTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">sponsorship<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/isponsorshipparams.html" class="tsd-signature-type">ISponsorshipParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">SponsorshipTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:129</li>
+									<li>Defined in build/global.d.ts:134</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1352,7 +1487,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ISponsorshipTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">SponsorshipTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -1369,7 +1504,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:222</li>
+									<li>Defined in build/global.d.ts:225</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1398,13 +1533,13 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 					<a name="transactionbyid" class="tsd-anchor"></a>
 					<h3>transaction<wbr>ById</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">transaction<wbr>ById<span class="tsd-signature-symbol">(</span>txId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, apiBase<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, requestOptions<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">RequestInit</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ITransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></li>
+						<li class="tsd-signature tsd-kind-icon">transaction<wbr>ById<span class="tsd-signature-symbol">(</span>txId<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, apiBase<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span>, requestOptions<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">RequestInit</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionFromNode</span><span class="tsd-signature-symbol">&gt;</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:184</li>
+									<li>Defined in build/global.d.ts:189</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1424,7 +1559,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> requestOptions: <span class="tsd-signature-type">RequestInit</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ITransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">object</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">TransactionFromNode</span><span class="tsd-signature-symbol">&gt;</span></h4>
 						</li>
 					</ul>
 				</section>
@@ -1432,13 +1567,13 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 					<a name="transfer" class="tsd-anchor"></a>
 					<h3>transfer</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">transfer<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/itransferparams.html" class="tsd-signature-type">ITransferParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ITransferTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">transfer<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/itransferparams.html" class="tsd-signature-type">ITransferParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">TransferTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:109</li>
+									<li>Defined in build/global.d.ts:114</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1455,7 +1590,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ITransferTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">TransferTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -1466,13 +1601,13 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 					<a name="updateassetinfo" class="tsd-anchor"></a>
 					<h3>update<wbr>Asset<wbr>Info</h3>
 					<ul class="tsd-signatures tsd-kind-function">
-						<li class="tsd-signature tsd-kind-icon">update<wbr>Asset<wbr>Info<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/iupdateassetinfoparams.html" class="tsd-signature-type">IUpdateAssetInfoParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">IUpdateAssetInfoTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
+						<li class="tsd-signature tsd-kind-icon">update<wbr>Asset<wbr>Info<span class="tsd-signature-symbol">(</span>params<span class="tsd-signature-symbol">: </span><a href="interfaces/iupdateassetinfoparams.html" class="tsd-signature-type">IUpdateAssetInfoParams</a>, seed<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">TSeedTypes</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">UpdateAssetInfoTransaction</span><span class="tsd-signature-symbol"> &amp; </span><a href="interfaces/withid.html" class="tsd-signature-type">WithId</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:134</li>
+									<li>Defined in build/global.d.ts:139</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1489,7 +1624,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 									<h5><span class="tsd-flag ts-flagOptional">Optional</span> seed: <span class="tsd-signature-type">TSeedTypes</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">IUpdateAssetInfoTransaction</span>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">UpdateAssetInfoTransaction</span>
 								<span class="tsd-signature-symbol"> &amp; </span>
 								<a href="interfaces/withid.html" class="tsd-signature-type">WithId</a>
 							</h4>
@@ -1506,7 +1641,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:179</li>
+									<li>Defined in build/global.d.ts:184</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1541,7 +1676,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:155</li>
+									<li>Defined in build/global.d.ts:160</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1582,7 +1717,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:161</li>
+									<li>Defined in build/global.d.ts:166</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1620,7 +1755,7 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in build/global.d.ts:167</li>
+									<li>Defined in build/global.d.ts:172</li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -1817,7 +1952,16 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 						<a href="globals.html#expect" class="tsd-kind-icon">expect</a>
 					</li>
 					<li class=" tsd-kind-function">
+						<a href="globals.html#fetchassetdetails" class="tsd-kind-icon">fetch<wbr>Asset<wbr>Details</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#fetchassetsdetails" class="tsd-kind-icon">fetch<wbr>Assets<wbr>Details</a>
+					</li>
+					<li class=" tsd-kind-function">
 						<a href="globals.html#file" class="tsd-kind-icon">file</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#generatenewseed" class="tsd-kind-icon">generate<wbr>New<wbr>Seed</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#invoke" class="tsd-kind-icon">invoke</a>
@@ -1827,6 +1971,9 @@ describe(<span class="hljs-string">'some suite'</span>, <span class="hljs-functi
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#issue" class="tsd-kind-icon">issue</a>
+					</li>
+					<li class=" tsd-kind-function">
+						<a href="globals.html#keccak" class="tsd-kind-icon">keccak</a>
 					</li>
 					<li class=" tsd-kind-function">
 						<a href="globals.html#keypair" class="tsd-kind-icon">key<wbr>Pair</a>

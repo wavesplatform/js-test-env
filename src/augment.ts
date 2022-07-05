@@ -4,18 +4,20 @@ import { compile as cmpl } from '@waves/ride-js';
 import chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import { MassTransferItem } from '@waves/ts-types';
+import { fetchDetails } from '@waves/node-api-js/cjs/api-node/assets';
 
 chai.use(chaiAsPromised);
 
 const NO_SEED_MSG = `Seed is undefined. Please check that you have seed in your config file or web ide settings`;
 
-export type TSetupAccountsFunc = (balances: Record<string, number>, options?: {masterSeed: string, nonce: string}) =>
+export type TSetupAccountsFunc = (balances: Record<string, number>, options?: { masterSeed: string, nonce: string }) =>
     Promise<Record<string, string>>
 
-export interface IAugmentOptions  {
-    broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast
-    setupAccountsWrapper?: (f : TSetupAccountsFunc) => TSetupAccountsFunc
+export interface IAugmentOptions {
+    broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast;
+    setupAccountsWrapper?: (f: TSetupAccountsFunc) => TSetupAccountsFunc;
 }
+
 export default function augment(global: any, options?: IAugmentOptions) {
     function withDefaults(options: INodeRequestOptions = {apiBase: global.env.API_BASE}) {
         return {
@@ -43,7 +45,7 @@ export default function augment(global: any, options?: IAugmentOptions) {
             );
     }
 
-    global.accounts = {}
+    global.accounts = {};
     global.wavesCrypto = wt.libs.crypto;
     global.chai = chai;
     global.expect = chai.expect;
@@ -93,7 +95,9 @@ export default function augment(global: any, options?: IAugmentOptions) {
     global.broadcast = (tx: wt.TTx, apiBase?: string, requestOptions?: RequestInit) => options && options.broadcastWrapper
         ? options.broadcastWrapper(wt.nodeInteraction.broadcast)(tx, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions)
         : wt.nodeInteraction.broadcast(tx, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
-
+    global.fetchAssetDetails = (id: string, apiBase: string = global.env.API_BASE) => fetchDetails(apiBase, id);
+    global.fetchAssetsDetails = (ids: string[], apiBase: string = global.env.API_BASE) => fetchDetails(apiBase, ids);
+    global.keccak = wt.libs.crypto.keccak;
     global.file = (name?: string) => {
         if (typeof global.env.file !== 'function') {
             throw new Error('File content API is not available. Please provide it to the console');
@@ -106,14 +110,25 @@ export default function augment(global: any, options?: IAugmentOptions) {
     global.publicKey = (seed?: string) => wt.libs.crypto.keyPair(seed || envSeed()).publicKey;
     global.privateKey = (seed?: string) => wt.libs.crypto.keyPair(seed || envSeed()).privateKey;
     global.address = (seed?: string, chainId?: string) => wt.libs.crypto.address(seed || envSeed(), chainId || global.env.CHAIN_ID);
-    global.compile = (code: string) => {
-        const resultOrError = cmpl(code, 3);
+    global.compile = (code: string,
+                      estimatorVersion: number = 3,
+                      needCompaction: boolean = false,
+                      removeUnusedCode: boolean = false,
+                      libraries: Record<string, string> = {}) => {
+        const resultOrError = cmpl(code, estimatorVersion, needCompaction, removeUnusedCode, libraries);
         if ('error' in resultOrError) throw new Error(resultOrError.error);
 
         return resultOrError.result.base64;
     };
 
-    global.invoke = ({dApp, functionName, arguments: argsOpt, payment: paymentOpt}: IInvokeOptions, seed?: string, apiBase?: string, requestOptions?: RequestInit) => {
+    global.generateNewSeed = wt.seedUtils.generateNewSeed;
+
+    global.invoke = ({
+                         dApp,
+                         functionName,
+                         arguments: argsOpt,
+                         payment: paymentOpt
+                     }: IInvokeOptions, seed?: string, apiBase?: string, requestOptions?: RequestInit) => {
         let payment: IPayment[] = [];
         if (typeof paymentOpt === 'number') payment = [{assetId: null, amount: paymentOpt}];
         if (typeof paymentOpt === 'object' && !Array.isArray(paymentOpt)) payment = [paymentOpt];
@@ -190,18 +205,18 @@ export default function augment(global: any, options?: IAugmentOptions) {
 
     global.setupAccounts = options && options.setupAccountsWrapper
         ? options.setupAccountsWrapper(setupAccountsFunc)
-        : setupAccountsFunc
+        : setupAccountsFunc;
 
 }
 
 export interface IPayment {
-    assetId?: string | null
-    amount: number
+    assetId?: string | null;
+    amount: number;
 }
 
 export interface IPayment {
-    assetId?: string | null
-    amount: number
+    assetId?: string | null;
+    amount: number;
 }
 
 interface IInvokeArgument {
@@ -213,9 +228,9 @@ interface IInvokeArgument {
 }
 
 export interface IInvokeOptions {
-    dApp: string
-    functionName: string
-    arguments?: (number | string | boolean | Uint8Array | number[] | IInvokeArgument)[]
-    payment?: IPayment | IPayment[] | number
+    dApp: string;
+    functionName: string;
+    arguments?: (number | string | boolean | Uint8Array | number[] | IInvokeArgument)[];
+    payment?: IPayment | IPayment[] | number;
 }
 
