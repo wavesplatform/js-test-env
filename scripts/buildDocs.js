@@ -1,13 +1,16 @@
 const fs = require('fs');
-const {execSync} = require('child_process');
+const path = require('path');
+const {execFileSync} = require('child_process');
 const {rmdir} = require('./utils');
 
 
 const mainIn = './src/index.d.ts';
 const interfacesIn = './node_modules/@waves/waves-transactions/dist/transactions.d.ts';
 const mainOut = './build/global.d.ts';
-const interfacesOut = './build//node_modules/@waves/waves-transactions/dist/transactions.d.ts';
-const typedocPath = './node_modules/typedoc/bin/typedoc';
+const interfacesOut = './build/transactions.d.ts';
+const typedocPkgPath = require.resolve('typedoc/package.json');
+const typedocBinRelPath = require(typedocPkgPath).bin.typedoc;
+const typedocPath = path.join(path.dirname(typedocPkgPath), typedocBinRelPath);
 //
 if (!fs.existsSync('build')) {
     fs.mkdirSync('build');
@@ -25,11 +28,21 @@ const modulePrefix = '/**\n' +
     ' */\n';
 const interfacesContent = fs.readFileSync(interfacesIn, "utf8");
 const firstExportIndex = interfacesContent.indexOf('export');
-fs.writeFileSync(interfacesIn, modulePrefix, "utf-8");
-fs.appendFileSync(interfacesIn, interfacesContent.slice(firstExportIndex), "utf-8")
+fs.mkdirSync(path.dirname(interfacesOut), {recursive: true});
+fs.writeFileSync(interfacesOut, modulePrefix, "utf-8");
+fs.appendFileSync(interfacesOut, interfacesContent.slice(firstExportIndex), "utf-8")
 
 
-execSync(`${typedocPath} --listFiles ${interfacesIn} ${mainOut}`);
+execFileSync(process.execPath, [
+    typedocPath,
+    '--tsconfig',
+    'tsconfig.build-docs.json',
+    '--entryPointStrategy',
+    'expand',
+    '--entryPoints',
+    interfacesOut,
+    mainOut
+], {stdio: 'inherit'});
 console.log('Docs built successfully');
 
 
