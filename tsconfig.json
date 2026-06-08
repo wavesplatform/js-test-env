@@ -1,6 +1,9 @@
 {
   "compilerOptions": {
     "baseUrl": "./",
+    "paths": {
+      "tslib": ["./node_modules/tslib/tslib.d.ts"]
+    },
     "outDir": "dist/",
     "rootDir": "src",
     "allowSyntheticDefaultImports": true,
@@ -12,7 +15,7 @@
     "importHelpers": true,
     "noEmitHelpers": true,
     "lib": ["dom", "es2016", "es2017"],
-    "types": [],
+    "types": ["node"],
     "target": "es2015",
     "module": "commonjs",
     "moduleResolution": "node",
@@ -27,30 +30,21 @@
     "strictFunctionTypes": false,
     "pretty": true,
     "removeComments": false,
-    "sourceMap": false
+    "sourceMap": false,
+    "ignoreDeprecations": "6.0"
   },
   "include": ["src/**/*", "typings/*", "src/**/*.json"],
 //  "files": ["src/main.ts", "node_modules/@waves/waves-transactions/dist/transactions.d.ts"],
   "typedocOptions": {
     "name": "js-test-env",
-    "mode": "file",
     "out": "docs",
     "readme": "README.md",
 //    "entryPoint": "global",
 //    "theme": "./node_modules/typedoc-clarity-theme",
-    "ignoreCompilerErrors": true,
-    "includeDeclarations": true,
+    "skipErrorChecking": true,
    // "exclude": "**/**/*+(tslib|waves-crypto|marshall|node|typedoc|events|waves-transactions)/**/*.ts",
 //    "exclude": "**/**/*+(generic|index|txToJson|validation).ts",
     "excludePrivate": true,
-    "excludeExternals": true,
-    "excludeNotExported": true,
-    "target": "ES6",
-    "moduleResolution": "node",
-    "preserveConstEnums": true,
-    "stripInternal": false,
-    "suppressExcessPropertyErrors": true,
-    "suppressImplicitAnyIndexErrors": true,
-    "module": "commonjs"
+    "excludeExternals": true
   }
 }
