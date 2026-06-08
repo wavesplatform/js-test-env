@@ -4,14 +4,16 @@
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "buildDocs": "node ./scripts/buildDocs.js",
     "compileAugment": "tsc -p tsconfig.augment.json",
-    "copyFiles": "cp src/index.d.ts dist/index.d.ts && cp src/index.js dist/index.js && cp README.md dist",
-    "copyPackageJson": "node ./scripts/copyPackageJson",
-    "build": "npm run compileAugment && npm run copyFiles && npm run copyPackageJson",
-    "prepublishOnly": "node ./scripts/checkFolder"
+    "copyFiles": "cp src/index.d.ts dist/index.d.ts && cp src/index.js dist/index.js",
+    "build": "npm run compileAugment && npm run copyFiles",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
