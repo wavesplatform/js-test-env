@@ -1,9 +1,13 @@
 import * as wt from '@waves/waves-transactions';
-import { INodeRequestOptions } from '@waves/waves-transactions';
 import { compile as cmpl } from '@waves/ride-js';
-import chai from 'chai';
+import * as chai from 'chai';
 import chaiAsPromised from 'chai-as-promised';
 import { MassTransferItem } from '@waves/ts-types';
+import type { INodeRequestOptions } from '@waves/node-api-js/cjs/nodeInteraction';
+import * as nodeInteraction from '@waves/node-api-js/cjs/nodeInteraction';
+import * as transactionsNodeApi from '@waves/node-api-js/cjs/api-node/transactions';
+import * as addressesNodeApi from '@waves/node-api-js/cjs/api-node/addresses';
+import * as assetsNodeApi from '@waves/node-api-js/cjs/api-node/assets';
 
 chai.use(chaiAsPromised);
 
@@ -13,7 +17,8 @@ export type TSetupAccountsFunc = (balances: Record<string, number>, options?: {m
     Promise<Record<string, string>>
 
 export interface IAugmentOptions  {
-    broadcastWrapper?: (f: typeof wt.broadcast) => typeof wt.broadcast
+    broadcastWrapper?: (f: (tx: wt.TTx, apiBase?: string, requestOptions?: RequestInit) => Promise<wt.TTx>) =>
+        (tx: wt.TTx, apiBase?: string, requestOptions?: RequestInit) => Promise<wt.TTx>
     setupAccountsWrapper?: (f : TSetupAccountsFunc) => TSetupAccountsFunc
 }
 export default function augment(global: any, options?: IAugmentOptions) {
@@ -43,6 +48,9 @@ export default function augment(global: any, options?: IAugmentOptions) {
             );
     }
 
+    const broadcastViaNodeApi = (tx: wt.TTx, apiBase?: string, requestOptions?: RequestInit) =>
+        transactionsNodeApi.broadcast(apiBase || global.env.API_BASE, tx, requestOptions || global.env.requestOptions) as Promise<wt.TTx>;
+
     global.accounts = {}
     global.wavesCrypto = wt.libs.crypto;
     global.chai = chai;
@@ -67,32 +75,33 @@ export default function augment(global: any, options?: IAugmentOptions) {
     global.updateAssetInfo = injectEnv(wt.updateAssetInfo);
 
     global.waitForTx = async (txId: string, options?: INodeRequestOptions, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.waitForTx(txId, withDefaults(options), requestOptions || global.env.requestOptions);
+        nodeInteraction.waitForTx(txId, withDefaults(options), requestOptions || global.env.requestOptions);
     global.waitForTxWithNConfirmations = async (txId: string, confirmations: number, options?: INodeRequestOptions, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.waitForTxWithNConfirmations(txId, confirmations, withDefaults(options), requestOptions || global.env.requestOptions);
+        nodeInteraction.waitForTxWithNConfirmations(txId, confirmations, withDefaults(options), requestOptions || global.env.requestOptions);
     global.waitNBlocks = (blocksCount: number, options?: INodeRequestOptions, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.waitNBlocks(blocksCount, withDefaults(options), requestOptions || global.env.requestOptions);
+        nodeInteraction.waitNBlocks(blocksCount, withDefaults(options), requestOptions || global.env.requestOptions);
     global.currentHeight = (apiBase?: string, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.currentHeight(apiBase || global.env.API_BASE);
+        nodeInteraction.currentHeight(apiBase || global.env.API_BASE);
     global.transactionById = (txId: string, apiBase?: string, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.transactionById(txId, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+        transactionsNodeApi.fetchInfo(apiBase || global.env.API_BASE, txId, requestOptions || global.env.requestOptions);
     global.waitForHeight = (target: number, options?: INodeRequestOptions, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.waitForHeight(target, withDefaults(options));
+        nodeInteraction.waitForHeight(target, withDefaults(options));
     global.balance = (address?: string, apiBase?: string, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.balance(address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+        addressesNodeApi.fetchBalance(apiBase || global.env.API_BASE, address || currentAddress(), requestOptions || global.env.requestOptions).then((r) => r.balance);
     global.assetBalance = (assetId: string, address?: string, apiBase?: string, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.assetBalance(assetId, address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+        assetsNodeApi.fetchBalanceAddressAssetId(apiBase || global.env.API_BASE, address || currentAddress(), assetId, requestOptions || global.env.requestOptions)
+            .then((r) => r.balance);
     global.balanceDetails = (address?: string, apiBase?: string, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.balanceDetails(address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+        addressesNodeApi.fetchBalanceDetails(apiBase || global.env.API_BASE, address || currentAddress(), requestOptions || global.env.requestOptions);
     global.accountData = (address?: string, apiBase?: string, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.accountData(address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+        nodeInteraction.accountData(address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
     global.accountDataByKey = (key: string, address?: string, apiBase?: string, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.accountDataByKey(key, address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+        nodeInteraction.accountDataByKey(key, address || currentAddress(), apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
     global.stateChanges = (invokeScriptTxId: string, apiBase?: string, requestOptions?: RequestInit) =>
-        wt.nodeInteraction.stateChanges(invokeScriptTxId, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+        nodeInteraction.stateChanges(invokeScriptTxId, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
     global.broadcast = (tx: wt.TTx, apiBase?: string, requestOptions?: RequestInit) => options && options.broadcastWrapper
-        ? options.broadcastWrapper(wt.nodeInteraction.broadcast)(tx, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions)
-        : wt.nodeInteraction.broadcast(tx, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
+        ? options.broadcastWrapper(broadcastViaNodeApi)(tx, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions)
+        : broadcastViaNodeApi(tx, apiBase || global.env.API_BASE, requestOptions || global.env.requestOptions);
 
     global.file = (name?: string) => {
         if (typeof global.env.file !== 'function') {
