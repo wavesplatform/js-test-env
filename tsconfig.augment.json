@@ -1,0 +1,10 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "declaration": true,
+    "outDir": "dist",
+    "composite": false
+  },
+  "include": [],
+  "files": ["src/augment.ts"]
+}
